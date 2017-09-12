@@ -1,6 +1,9 @@
+require_relative 'ls'
+
 class Controller
-  def initialize(filename)
+  def initialize(filename, instances = Hash.new)
     @filename = filename
+    @ls = instances[:ls] || Ls.new
     open_history_file
   end
 
@@ -10,15 +13,15 @@ class Controller
 
   def scan_for_commands
     file.readlines.each do |line|
-      id, command = line.split(/  /).reject { |part| part == ""}
+      id, command = line.chomp.split(/  /).reject { |part| part == ""}
       case command
       when /ls/
-        puts "Found ls"
+        ls.suggest_tips(command)
       end
     end
   end
 
   private
 
-  attr_reader :filename, :file
+  attr_reader :filename, :file, :ls
 end

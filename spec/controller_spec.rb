@@ -1,7 +1,9 @@
 require 'controller'
 
 describe Controller do
-  subject(:controller) { described_class.new("history_test.txt") }
+  let! (:ls) { double(:ls) }
+  let! (:instances) { { ls: ls }  }
+  subject(:controller) { described_class.new("history_test.txt", instances) }
 
   describe 'initialisation' do
     it 'throws an error if the history file does not exist' do
@@ -11,7 +13,8 @@ describe Controller do
 
   describe 'scan for commands' do
     it 'can find ls command' do
-      expect { controller.scan_for_commands }.to output(/Found ls/).to_stdout
+      expect(ls).to receive(:suggest_tips).with("ls -la")
+      controller.scan_for_commands
     end
   end
 
