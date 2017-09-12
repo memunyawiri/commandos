@@ -1,0 +1,8 @@
+  676  rspec
+  677  git status
+  678  git add .
+  679  git status
+  680  git commit -m "Passed first test"
+  681  git push
+  682  ls -la
+  683  ./commandos.sh

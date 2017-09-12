@@ -9,4 +9,14 @@ describe Commandos do
     end
   end
 
+  describe 'scan for commands' do
+    before do
+      commandos = Commandos.new("history_test.txt")
+    end
+
+    it 'can find ls command' do
+      expect { commandos.scan_for_commands }.to output(/Found ls/).to_stdout
+    end
+  end
+
 end
