@@ -1,0 +1,25 @@
+  581  history | tail -n 15 > history.txt
+  582  man less
+  583  ./commandos.sh
+  584  tail -n 15 history.txt
+  585  tail -n 15 history.txt > history.txt
+  586  history > history.txt
+  587  tail -n 15 history.txt > history.txt
+  588  ./commandos.sh
+  589  ./commandos.sh
+  590  ./commandos.sh
+  591  ls 
+  592  ./commandos.sh
+  593  ./commandos.sh
+  594  ./commandos.sh
+  595  ./commandos.sh
+  596  ./commandos.sh
+  597  clear
+  598  ./commandos.sh
+  599  ./commandos.sh
+  600  ./commandos.sh
+  601  ./commandos.sh
+  602  ./commandos.sh
+  603  git status
+  604  git add .
+  605  ./commandos.sh
