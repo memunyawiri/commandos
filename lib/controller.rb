@@ -2,7 +2,8 @@
 class Controller
   def initialize(filename, instances = {})
     @file = File.open(filename, 'r')
-    initialize_command_instances(instances)
+    set_default_command_instances
+    override_command_instances(instances)
   end
 
   def scan_for_commands
@@ -17,11 +18,17 @@ class Controller
 
   attr_reader :file
 
-  def initialize_command_instances(instances)
+  def set_default_command_instances
     @instances = {}
+    [:ls].each do |command|
+      require_relative command.to_s
+      @instances[command] = Object.const_get(command.capitalize).new
+    end
+  end
+
+  def override_command_instances(instances)
     instances.each do |key, value|
-      require_relative key.to_s
-      @instances[key] = value || Object.const_get(key.capitalize).new
+      @instances[key] = value
     end
   end
 
