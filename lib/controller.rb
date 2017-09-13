@@ -1,6 +1,6 @@
 # Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
-  COMMANDS = [:ls].freeze
+  COMMANDS = [:ls, :cd].freeze
 
   def initialize(filename, instances = {})
     @file = File.open(filename, 'r')
