@@ -8,12 +8,7 @@ class Cd
   end
 
   def suggest_tips(command)
-    options = []
-    command.split(/ /)[1..-1].each do |option|
-      option.each_char do |char|
-        options << char
-      end
-    end
+    options = command.split(" ")[1..-1]
     combine_tips(options)
   end
 
