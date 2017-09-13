@@ -9,10 +9,8 @@ class Ls
 
   def suggest_tips(command)
     options = []
-    command.gsub(/ls  -/, "")
     command.split(/-/)[1..-1].each do |option|
       option.each_char do |char|
-        puts char
         options << char
       end
     end
