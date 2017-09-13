@@ -1,7 +1,9 @@
 class Ls
   def initialize
     @tips = {
-      a: '-a would give you hidden files as well'
+      a: '-a would give you hidden files as well',
+      l: '-l would give you more information about your files',
+      t: '-t gives you a list of files sorted by time modified :-)'
     }
   end
 
@@ -12,10 +14,22 @@ class Ls
         options << char
       end
     end
-    [] << check_for_a(options)
+    combine_all_useful_tips(options)
   end
 
   private
+
+  def combine_all_useful_tips(options)
+    [] << check_for_a(options) << check_for_l(options) << check_for_t(options)
+  end
+
+  def check_for_t(options)
+    return @tips[:t] unless options.include?('t')
+  end
+
+  def check_for_l(options)
+    return @tips[:l] unless options.include?("l")
+  end
 
   def check_for_a(options)
     return @tips[:a] unless options.include?("a")
