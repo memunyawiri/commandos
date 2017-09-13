@@ -1,12 +1,13 @@
+# Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
-  def initialize(filename, instances = Hash.new)
+  def initialize(filename, instances = {})
     @file = File.open(filename, 'r')
     initialize_command_instances(instances)
   end
 
   def scan_for_commands
     file.readlines.each do |line|
-      id, command = line.chomp.split('  ').reject { |part| part == '' }
+      _id, command = line.chomp.split('  ').reject { |part| part == '' }
       command_instance = instance_for(command)
       command_instance.suggest_tips(command) if command_instance
     end

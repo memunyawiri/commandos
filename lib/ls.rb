@@ -1,3 +1,4 @@
+# Ls class suggests tips for ls command
 class Ls
   def initialize
     @tips = {
@@ -18,6 +19,6 @@ class Ls
   private
 
   def check_for_a(options)
-    return @tips[:a] unless options.include?("a")
+    return @tips[:a] unless options.include?('a')
   end
 end
