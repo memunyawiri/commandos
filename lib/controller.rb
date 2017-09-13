@@ -1,27 +1,30 @@
-require_relative 'ls'
-
 class Controller
   def initialize(filename, instances = Hash.new)
-    @filename = filename
-    @ls = instances[:ls] || Ls.new
-    open_history_file
-  end
-
-  def open_history_file
-    @file = File.open(filename, "r")
+    @file = File.open(filename, 'r')
+    initialize_command_instances(instances)
   end
 
   def scan_for_commands
     file.readlines.each do |line|
-      id, command = line.chomp.split(/  /).reject { |part| part == ""}
-      case command
-      when /ls/
-        ls.suggest_tips(command)
-      end
+      id, command = line.chomp.split('  ').reject { |part| part == '' }
+      command_instance = instance_for(command)
+      command_instance.suggest_tips(command) if command_instance
     end
   end
 
   private
 
-  attr_reader :filename, :file, :ls
+  attr_reader :file
+
+  def initialize_command_instances(instances)
+    @instances = {}
+    instances.each do |key, value|
+      require_relative key.to_s
+      @instances[key] = value || Object.const_get(key.capitalize).new
+    end
+  end
+
+  def instance_for(command)
+    @instances[command.split(' ')[0].to_sym]
+  end
 end
