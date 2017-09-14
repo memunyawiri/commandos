@@ -1,0 +1,1 @@
+-a would give you hidden files as well
