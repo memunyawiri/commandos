@@ -1,6 +1,7 @@
 require 'printer'
 
 describe Printer do
+  RANDOM_SEED = 2390
   subject(:printer) { described_class.new }
   let!(:tips_array) { [tip_a, tip_l, tip_t] }
   let!(:tip_a) { '-a would give you hidden files as well' }
@@ -11,8 +12,8 @@ describe Printer do
 
   describe "output" do
     it 'puts the tip in pretty way' do
-      #srand seeds any call for random with the number argument. Saw this in a video by makers.
-      srand(2390)
+      #srand seeds any call for random with a number argument. Saw this in a video by makers.
+      srand(RANDOM_SEED)
       expect { printer.output(tips_array, :print) }.to output(tip_a).to_stdout
     end
 
