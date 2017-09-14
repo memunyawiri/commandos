@@ -9,31 +9,31 @@ describe Cd do
   describe '#suggest_tips' do
     describe 'Tip for hyphen' do
       it 'suggests using the hyphen when it is not used' do
-        expect(cd.suggest_tips('cd ruby-kickstart').include?(tip_hyphen)).to be true
+        expect(cd.suggest_tips('ruby-kickstart').include?(tip_hyphen)).to be true
       end
 
       it 'does not suggest using the hyphen option when already used' do
-        expect(cd.suggest_tips('cd -').include?(tip_hyphen)).to be false
+        expect(cd.suggest_tips('-').include?(tip_hyphen)).to be false
       end
     end
 
     describe 'Tip for tilde' do
       it 'suggests using the tilde when it is not used' do
-        expect(cd.suggest_tips('cd').include?(tip_tilde)).to be true
+        expect(cd.suggest_tips('').include?(tip_tilde)).to be true
       end
 
       it 'does not suggest using the tilde option when already used' do
-        expect(cd.suggest_tips('cd ~').include?(tip_tilde)).to be false
+        expect(cd.suggest_tips('~').include?(tip_tilde)).to be false
       end
     end
 
     describe 'Tip for forward slash' do
       it 'suggests using the forward slash when it is not used' do
-        expect(cd.suggest_tips('cd').include?(tip_forward_slash)).to be true
+        expect(cd.suggest_tips('').include?(tip_forward_slash)).to be true
       end
 
       it 'does not suggest using the forward slash option when already used' do
-        expect(cd.suggest_tips('cd /').include?(tip_forward_slash)).to be false
+        expect(cd.suggest_tips('/').include?(tip_forward_slash)).to be false
       end
     end
 
@@ -42,6 +42,5 @@ describe Cd do
         expect(cd.suggest_tips('cd')).to eq([tip_hyphen, tip_tilde, tip_forward_slash])
       end
     end
-
   end
 end

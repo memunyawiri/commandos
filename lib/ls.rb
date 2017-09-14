@@ -8,19 +8,19 @@ class Ls
     }
   end
 
-  def suggest_tips(command)
+  def suggest_tips(arguments)
     options = []
-    command.split(/-/)[1..-1].each do |option|
+    arguments.split('-').each do |option|
       option.each_char do |char|
         options << char
       end
     end
-    combine_all_useful_tips(options)
+    combine_tips(options)
   end
 
   private
 
-  def combine_all_useful_tips(options)
+  def combine_tips(options)
     [] << check_for_a(options) << check_for_l(options) << check_for_t(options)
   end
 
@@ -29,7 +29,7 @@ class Ls
   end
 
   def check_for_l(options)
-    return @tips[:l] unless options.include?("l")
+    return @tips[:l] unless options.include?('l')
   end
 
   def check_for_a(options)

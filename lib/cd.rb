@@ -1,3 +1,4 @@
+# Cd class suggests tips for cd command
 class Cd
   def initialize
     @tips = {
@@ -7,9 +8,8 @@ class Cd
     }
   end
 
-  def suggest_tips(command)
-    options = command.split(" ")[1..-1]
-    combine_tips(options)
+  def suggest_tips(arguments)
+    combine_tips([arguments])
   end
 
   private
@@ -19,14 +19,14 @@ class Cd
   end
 
   def check_for_hyphen(options)
-    return @tips[:hyphen] unless options.include?("-")
+    return @tips[:hyphen] unless options.include?('-')
   end
 
   def check_for_tilde(options)
-    return @tips[:tilde] unless options.include?("~")
+    return @tips[:tilde] unless options.include?('~')
   end
 
   def check_for_forward_slash(options)
-    return @tips[:forward_slash] unless options.include?("/")
+    return @tips[:forward_slash] unless options.include?('/')
   end
 end
