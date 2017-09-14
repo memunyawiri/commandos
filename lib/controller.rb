@@ -1,27 +1,35 @@
-require_relative 'ls'
-
+# Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
-  def initialize(filename, instances = Hash.new)
-    @filename = filename
-    @ls = instances[:ls] || Ls.new
-    open_history_file
-  end
+  COMMANDS = %i[ls cd].freeze
 
-  def open_history_file
-    @file = File.open(filename, "r")
+  def initialize(filename, instances = {})
+    @file = File.open(filename, 'r')
+    load_command_instances(instances)
   end
 
   def scan_for_commands
     file.readlines.each do |line|
-      id, command = line.chomp.split(/  /).reject { |part| part == ""}
-      case command
-      when /ls/
-        ls.suggest_tips(command)
-      end
+      _id, command, arguments = extract_id_command_arguments(line)
+      next unless COMMANDS.include?(command.to_sym)
+      p @instances[command.to_sym].suggest_tips(arguments.to_s)
     end
   end
 
   private
 
-  attr_reader :filename, :file, :ls
+  attr_reader :file
+
+  def load_command_instances(instances)
+    @instances = {}
+    COMMANDS.each do |command|
+      require_relative command.to_s
+      @instances[command] = instances[command] || Object.const_get(command.capitalize).new
+    end
+  end
+
+  def extract_id_command_arguments(line)
+    id, rest = line.chomp.split('  ').reject { |part| part == '' }
+    command, arguments = rest.split(' ', 2)
+    [id, command, arguments]
+  end
 end
