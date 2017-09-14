@@ -11,6 +11,8 @@ describe Printer do
 
   describe "output" do
     it 'puts the tip in pretty way' do
+      #srand seeds any call for random with the number argument. Saw this in a video by makers.
+      srand(2390)
       expect { printer.output(tips_array, :print) }.to output(tip_a).to_stdout
     end
 
@@ -18,10 +20,6 @@ describe Printer do
       printer.output(tips_array, :file)
        expect(exist?("output.txt")).to be true
     end
-
-    #
-
-
   end
 
 end

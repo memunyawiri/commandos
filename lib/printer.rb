@@ -14,7 +14,7 @@ private
   end
 
   def tip_decider(tips)
-    tips.first
+    tips.sample
   end
 
   def print_tips(tip)
