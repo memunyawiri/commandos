@@ -1,57 +1,65 @@
 require 'ls'
 
 describe Ls do
-  subject(:ls) { described_class.new }
-  let!(:tip_a) { '-a would give you hidden files as well' }
-  let!(:tip_l) { '-l would give you more information about your files' }
-  let!(:tip_t) { '-t gives you a list of files sorted by time modified :-)' }
+  subject(:ls) { described_class.new('tips/ls.txt') }
+  let!(:tips) { ls.tips }
+
+  describe 'initialisation' do
+    it 'throws an error if the tip file does not exist' do
+      expect { Ls.new('nonexistent_ls.txt') }.to raise_error(Errno::ENOENT)
+    end
+
+    it 'loads the tips' do
+      expect(ls.tips.count).to eq 3
+    end
+  end
 
   describe '#suggest_tips' do
     describe 'Edge cases' do
       it 'passes all of the tips if none of the flags are used' do
-        expect(ls.suggest_tips('')).to eq([tip_a, tip_l, tip_t])
+        expect(ls.suggest_tips('')).to eq([tips[:a], tips[:l], tips[:t]])
       end
     end
 
     describe 'Tip for "a" flag' do
       it 'suggests using -a option when it is not used' do
-        expect(ls.suggest_tips('-l').include?(tip_a)).to be true
+        expect(ls.suggest_tips('-l').include?(tips[:a])).to be true
       end
 
       it 'does not suggest using -a option when already used in an individual format' do
-        expect(ls.suggest_tips('-l -a').include?(tip_a)).to be false
+        expect(ls.suggest_tips('-l -a').include?(tips[:a])).to be false
       end
 
       it 'does not suggest using -a option when already used in a combined format' do
-        expect(ls.suggest_tips('-la').include?(tip_a)).to be false
+        expect(ls.suggest_tips('-la').include?(tips[:a])).to be false
       end
     end
 
     describe 'Tip for "l" flag' do
       it 'suggests using -l option when it is not used' do
-        expect(ls.suggest_tips('-a').include?(tip_l)).to be true
+        expect(ls.suggest_tips('-a').include?(tips[:l])).to be true
       end
 
       it 'does not suggest using -l option when already used in an individual format' do
-        expect(ls.suggest_tips('-l -a').include?(tip_l)).to be false
+        expect(ls.suggest_tips('-l -a').include?(tips[:l])).to be false
       end
 
       it 'does not suggest using -l option when already used in a combined format' do
-        expect(ls.suggest_tips('-la').include?(tip_l)).to be false
+        expect(ls.suggest_tips('-la').include?(tips[:l])).to be false
       end
     end
 
     describe 'Tip for "t" flag' do
       it 'suggests using -t option when it is not used' do
-        expect(ls.suggest_tips('ls').include?(tip_t)).to be true
+        expect(ls.suggest_tips('ls').include?(tips[:t])).to be true
       end
 
       it 'does not suggest using -t option when already used in an individual format' do
-        expect(ls.suggest_tips('ls -t -l').include?(tip_t)).to be false
+        expect(ls.suggest_tips('ls -t -l').include?(tips[:t])).to be false
       end
 
       it 'does not suggest using -t option when already used in a combined format' do
-        expect(ls.suggest_tips('ls -lt').include?(tip_t)).to be false
+        expect(ls.suggest_tips('ls -lt').include?(tips[:t])).to be false
       end
     end
   end
