@@ -11,7 +11,7 @@ class Controller
     file.readlines.each do |line|
       _id, command, arguments = extract_id_command_arguments(line)
       next unless COMMANDS.include?(command.to_sym)
-      @instances[command.to_sym].suggest_tips(arguments.to_s)
+      p @instances[command.to_sym].suggest_tips(arguments.to_s)
     end
   end
 
