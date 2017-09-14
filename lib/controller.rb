@@ -1,8 +1,11 @@
+require_relative 'tips_sanitiser'
 # Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
   COMMANDS = %i[ls cd].freeze
 
-  def initialize(filename, instances = {})
+  def initialize(filename, instances = {}, sanitiser = TipsSanitiser.new)
+    @sanitiser = sanitiser
+    @tips = []
     @file = File.open(filename, 'r')
     load_command_instances(instances)
   end
@@ -11,8 +14,13 @@ class Controller
     file.readlines.each do |line|
       _id, command, arguments = extract_id_command_arguments(line)
       next unless COMMANDS.include?(command.to_sym)
-      @instances[command.to_sym].suggest_tips(arguments.to_s)
+      @tips << @instances[command.to_sym].suggest_tips(arguments.to_s)
     end
+    @tips = @tips.flatten
+  end
+
+  def sanitise
+    @tips = @sanitiser.sanitise(@tips)
   end
 
   private
