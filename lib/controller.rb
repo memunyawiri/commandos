@@ -2,8 +2,9 @@
 class Controller
   COMMANDS = %i[ls cd].freeze
 
-  def initialize(filename, instances = {})
-    @tips =[]
+  def initialize(filename, instances = {}, sanitiser = TipsSanitiser.new)
+    @sanitiser = sanitiser
+    @tips = []
     @file = File.open(filename, 'r')
     load_command_instances(instances)
   end
@@ -14,10 +15,12 @@ class Controller
       next unless COMMANDS.include?(command.to_sym)
       @tips << @instances[command.to_sym].suggest_tips(arguments.to_s)
     end
-     p @tips = @tips.flatten
+    @tips = @tips.flatten
   end
 
-
+  def sanitise
+    @sanitiser.sanitise(@tips)
+  end
 
   private
 
