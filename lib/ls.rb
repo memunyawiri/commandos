@@ -1,11 +1,7 @@
 # Ls class suggests tips for ls command
 class Ls
-  def initialize
-    @tips = {
-      a: '-a would give you hidden files as well',
-      l: '-l would give you more information about your files',
-      t: '-t gives you a list of files sorted by time modified :-)'
-    }
+  def initialize(filename = 'tips/ls.txt')
+    load_tips(filename)
   end
 
   def suggest_tips(arguments)
@@ -18,7 +14,21 @@ class Ls
     combine_tips(options)
   end
 
+  def tips
+    @tips.dup
+  end
+
   private
+
+  def load_tips(filename)
+    @tips = {}
+    File.open(filename, 'r') do |file|
+      file.readlines.each do |line|
+        key, value = line.chomp.split(':', 2)
+        @tips[key.to_sym] = value
+      end
+    end
+  end
 
   def combine_tips(options)
     [] << check_for_a(options) << check_for_l(options) << check_for_t(options)
