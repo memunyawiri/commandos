@@ -1,5 +1,5 @@
+# The Printer class delivers the tips to the user in the format that was requested.
 class Printer
-
 
   def output(tips, type_of_output)
     output_type_decider(tip_decider(tips), type_of_output)
@@ -8,9 +8,14 @@ class Printer
 private
 
   def output_type_decider(tip, type_of_output)
-    print_tips(tip) if type_of_output == :print
-    write_tips_to_file(tip) if type_of_output == :file
-    say_tips(tip) if type_of_output == :says
+    case type_of_output
+      when :print
+        print_tips(tip)
+      when :file
+        write_tips_to_file(tip)
+      when :says
+        say_tips(tip)
+      end
   end
 
   def tip_decider(tips)
