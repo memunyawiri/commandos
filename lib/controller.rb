@@ -1,3 +1,4 @@
+require_relative 'tips_sanitiser'
 # Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
   COMMANDS = %i[ls cd].freeze
@@ -19,7 +20,7 @@ class Controller
   end
 
   def sanitise
-    @sanitiser.sanitise(@tips)
+    @tips = @sanitiser.sanitise(@tips)
   end
 
   private
