@@ -3,6 +3,7 @@ class Controller
   COMMANDS = %i[ls cd].freeze
 
   def initialize(filename, instances = {})
+    @tips =[]
     @file = File.open(filename, 'r')
     load_command_instances(instances)
   end
@@ -11,9 +12,12 @@ class Controller
     file.readlines.each do |line|
       _id, command, arguments = extract_id_command_arguments(line)
       next unless COMMANDS.include?(command.to_sym)
-      p @instances[command.to_sym].suggest_tips(arguments.to_s)
+      @tips << @instances[command.to_sym].suggest_tips(arguments.to_s)
     end
+     p @tips = @tips.flatten
   end
+
+
 
   private
 

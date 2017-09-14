@@ -23,4 +23,7 @@ describe Controller do
       controller.scan_for_commands
     end
   end
+
+  
+
 end
