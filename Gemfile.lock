@@ -50,7 +50,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rake
   rspec
   rubocop
   simplecov
