@@ -3,17 +3,17 @@ require 'controller'
 describe Controller do
   let!(:ls) { double(:ls, suggest_tips: []) }
   let!(:cd) { double(:cd, suggest_tips: []) }
-  let!(:tips_santiser) { double(:tips_santiser, sanitise: []) }
+  let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: []) }
+  let!(:printer) { double(:printer, output: []) }
   let!(:instances) { { ls: ls, cd: cd } }
-  subject(:controller) { described_class.new('history_test.txt', instances, tips_santiser) }
+  subject(:controller) { described_class.new('history_test.txt', instances, tips_sanitiser, printer) }
+  let!(:controller2) { described_class.new('nonexistent_history.txt') }
 
-  describe 'initialisation' do
+  describe '#scan_for_commands' do
     it 'throws an error if the history file does not exist' do
-      expect { Controller.new('nonexistent_history.txt') }.to raise_error(Errno::ENOENT)
+      expect { controller2.scan_for_commands }.to raise_error(Errno::ENOENT)
     end
-  end
 
-  describe 'scan for commands' do
     it 'can find ls command' do
       expect(ls).to receive(:suggest_tips).with('-la')
       controller.scan_for_commands
@@ -26,9 +26,16 @@ describe Controller do
   end
 
   describe '#sanitise' do
-    it 'it calls the sanitise method' do
-      expect(tips_santiser).to receive(:sanitise)
+    it 'calls the sanitise method of tips_sanitiser' do
+      expect(tips_sanitiser).to receive(:sanitise).with(Array)
       controller.sanitise
+    end
+  end
+
+  describe '#output' do
+    it 'it calls the output method' do
+      expect(printer).to receive(:output)
+      controller.output('print')
     end
   end
 end

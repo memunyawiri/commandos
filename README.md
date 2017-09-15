@@ -14,6 +14,14 @@ $ cd commandos
 Use the bash terminal as you would normally do.  
 Run `$ ./commandos.sh` to see a list of printed tips relevant to your activity.
 
+#### Configuration
+
+You can change the configuration in commandos.sh script file to write the tip to file, or say the tip instead of the default option of printing to standard output.
+
+```
+history > history.txt
+ruby ./lib/commandos.rb history.txt [print | file | speech]
+```
 
 Design
 ---
@@ -32,11 +40,20 @@ Design
 
 #### Printer
 
+The Printer class delivers the tips to the user in the format that was requested.
+
+| Requested Format |            Action           |         |
+|:----------------:|:---------------------------:|:-------:|
+| print            | Prints to standard output   | default |
+| file             | Writes to output/output.txt |         |
+| speech           | Says the tip out loud       |         |
+
 Technologies
 ---
 
-Ruby
-RSpec
+Ruby  
+Shell  
+RSpec, Aruba
 
 
 Areas for development
