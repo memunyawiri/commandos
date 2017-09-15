@@ -29,7 +29,11 @@ class Rm
   end
 
   def combine_tips(options)
-    [] << check_for_ri(options)
+    [check_for_i(options), check_for_ri(options)]
+  end
+
+  def check_for_i(options)
+    return @tips[:i] unless !options.include?('r') && options.include?('i')
   end
 
   def check_for_ri(options)

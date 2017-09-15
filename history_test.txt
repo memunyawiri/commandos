@@ -9,3 +9,4 @@
   683  cd ruby-kickstart
   684  touch ruby-kickstart
   685  mkdir ruby-kickstart
+  686  rm file_name.txt
