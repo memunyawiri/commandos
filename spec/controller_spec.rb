@@ -26,7 +26,7 @@ describe Controller do
     end
 
     it 'can find cat command' do
-      expect(cat).to receive(:suggest_tips).with("file_name.txt")
+      expect(cat).to receive(:suggest_tips).with('file_name.txt')
       controller.scan_for_commands
     end
   end
