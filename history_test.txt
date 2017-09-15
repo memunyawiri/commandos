@@ -7,4 +7,4 @@
   682  ls -la
   683  cd ruby-kickstart
   684  touch ruby-kickstart
-  685  rm ruby-kickstart
+  685  mkdir ruby-kickstart
