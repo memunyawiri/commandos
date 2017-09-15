@@ -1,5 +1,4 @@
 require_relative 'controller'
-require_relative 'printer'
 
 filename = ARGV[0] || 'history.txt'
 output_type = ARGV[1] || 'print'
