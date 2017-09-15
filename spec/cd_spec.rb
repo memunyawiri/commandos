@@ -1,7 +1,8 @@
 require 'cd'
 
 describe Cd do
-  subject(:cd) { described_class.new('tips/cd.txt') }
+  subject(:cd) { described_class.new(filename) }
+  let!(:filename) { 'tips/cd.txt' }
   let!(:tips) { cd.tips }
   let!(:all_tips) { [tips[:hyphen], tips[:tilde_or_empty], tips[:forward_slash]] }
 
@@ -11,7 +12,9 @@ describe Cd do
     end
 
     it 'loads the tips' do
-      expect(cd.tips.count).to eq 3
+      File.open(filename, 'r') do |file|
+        expect(cd.tips.count).to eq file.readlines.size
+      end
     end
   end
 
