@@ -1,0 +1,2 @@
+rmdir: rmdir deletes empty folders created by mistake
+open: open . to open your current directory in finder
