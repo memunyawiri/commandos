@@ -6,15 +6,10 @@ describe Controller do
   let!(:mv) { double(:mv, suggest_tips: []) }
   let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: []) }
   let!(:printer) { double(:printer, output: []) }
-<<<<<<< Updated upstream
-  let!(:instances) { { ls: ls, cd: cd } }
+  let!(:instances) { { ls: ls, cd: cd, mv: mv } }
   subject(:controller) do
     described_class.new('history_test.txt', instances, tips_sanitiser, printer)
   end
-=======
-  let!(:instances) { { ls: ls, cd: cd, mv: mv } }
-  subject(:controller) { described_class.new('history_test.txt', instances, tips_sanitiser, printer) }
->>>>>>> Stashed changes
   let!(:controller2) { described_class.new('nonexistent_history.txt') }
 
   describe '#scan_for_commands' do

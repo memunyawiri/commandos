@@ -5,7 +5,6 @@ class Mv
   end
 
   def suggest_tips(arguments)
-
     combine_tips(arguments)
   end
 
@@ -29,7 +28,7 @@ class Mv
     [] << check_for_mv(options)
   end
 
-  def check_for_mv(options)
-    return @tips[:mv]
+  def check_for_mv(_options)
+    @tips[:mv]
   end
 end
