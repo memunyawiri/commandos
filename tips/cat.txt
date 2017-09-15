@@ -1,0 +1,2 @@
+b:Did you know that cat -b will tell you the number of non blank lines of output in a file.
+n:The command cat -n will print all lines in a file.
