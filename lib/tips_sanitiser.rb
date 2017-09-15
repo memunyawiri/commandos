@@ -7,10 +7,10 @@ class TipsSanitiser
   private
 
   def remove_nils(tips)
-    tips.compact!
+    tips.compact
   end
 
   def remove_duplicates(tips)
-    tips.uniq!
+    tips.uniq
   end
 end
