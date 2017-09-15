@@ -1,8 +1,9 @@
 require 'ls'
 
 describe Ls do
-  subject(:ls) { described_class.new('tips/ls.txt') }
+  subject(:ls) { described_class.new(filename) }
   let!(:tips) { ls.tips }
+  let!(:filename) { 'tips/ls.txt' }
 
   describe 'initialisation' do
     it 'throws an error if the tip file does not exist' do
@@ -10,7 +11,9 @@ describe Ls do
     end
 
     it 'loads the tips' do
-      expect(ls.tips.count).to eq 3
+      File.open(filename, 'r') do |file|
+        expect(ls.tips.count).to eq file.readlines.size
+      end
     end
   end
 
