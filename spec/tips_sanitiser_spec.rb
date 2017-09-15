@@ -12,7 +12,7 @@ describe TipsSanitiser do
       expect(tips_sanitiser.sanitise(raw_tips_array)).to eq(clean_tips_array)
     end
 
-    it 'removes any duplicte elements' do
+    it 'removes any duplicate elements' do
       expect(tips_sanitiser.sanitise(raw_tips_array)).to eq(clean_tips_array)
     end
   end

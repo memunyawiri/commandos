@@ -1,8 +1,7 @@
 # TipsSanitiser class sanitises the tips sent from controller
 class TipsSanitiser
   def sanitise(tips)
-    remove_nils(tips)
-    remove_duplicates(tips)
+    remove_duplicates(remove_nils(tips))
   end
 
   private
