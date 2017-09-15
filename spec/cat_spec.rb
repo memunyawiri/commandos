@@ -11,13 +11,13 @@ describe Cat do
 
   describe '#tips' do
     it 'loads the tips' do
-      expect(cat.tips.count).to eq(2)
+      expect(cat.tips.count).to file.readlines.size
     end
   end
 
   describe '#suggest_tips' do
     it 'passes all of the tips if none of the flags are used' do
-      expect(cat.suggest_tips('')).to eq([tips[:b], tips[:n]])
+      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n]])
     end
 
     describe '-b flag sugestions' do
@@ -25,7 +25,7 @@ describe Cat do
         expect(cat.suggest_tips('-n next_belly_file.txt').include?(tips[:b])).to be true
       end
 
-      it 'suggests does not suggest the -b bens_next_burps.txt when it is used' do
+      it 'does not suggest the -b bens_best_burps.txt when it is used' do
         expect(cat.suggest_tips('-b bens_best_burps.txt').include?(tips[:b])).to be false
       end
     end
