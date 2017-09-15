@@ -22,9 +22,9 @@ describe Printer do
       expect('output.txt').to have_file_content tips[1]
     end
 
-    it 'speaks the tip(s) when output type is speech' do
-      expect { printer.output(tips, 'speech') }.not_to raise_error # needs changing
-    end
+    # it 'speaks the tip(s) when output type is speech' do
+    #   expect { printer.output(tips, 'speech') }.not_to raise_error # needs changing
+    # end
 
     it 'prints the tip(s) when output type is not print/file/speech' do
       expect { printer.output(tips, 'gobbledygook') }.to output("#{tips[1]}\n").to_stdout

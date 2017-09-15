@@ -1,4 +1,5 @@
 require_relative 'tips_sanitiser'
+require_relative 'printer'
 # Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
   COMMANDS = %i[ls cd].freeze
