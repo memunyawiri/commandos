@@ -4,8 +4,8 @@ class Mkdir
     load_tips(filename)
   end
 
-  def suggest_tips(arguments)
-    check_for_empty(arguments.strip)
+  def suggest_tips(_arguments)
+    [@tips[:rmdir], @tips[:open]]
   end
 
   def tips
@@ -22,9 +22,5 @@ class Mkdir
         @tips[key.to_sym] = value
       end
     end
-  end
-
-  def check_for_empty(options)
-    return @tips[:rmdir], @tips[:open]
   end
 end

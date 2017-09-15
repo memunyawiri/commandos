@@ -1,2 +1,2 @@
-rmdir: rmdir deletes empty folders created by mistake
-open: open . to open your current directory in finder
+rmdir:You can delete empty directories using rmdir
+open:You can open your current directory in finder with open .

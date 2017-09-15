@@ -9,11 +9,11 @@ describe Mkdir do
     it 'throws an error if the tip file does not exist' do
       expect { Mkdir.new('nonexistent_mkdir.txt') }.to raise_error(Errno::ENOENT)
     end
-  end
 
-  it 'loads the tips' do
-    File.open(filename, 'r') do |file|
-      expect(mkdir.tips.count).to eq file.readlines.size
+    it 'loads the tips' do
+      File.open(filename, 'r') do |file|
+        expect(mkdir.tips.count).to eq file.readlines.size
+      end
     end
   end
 
