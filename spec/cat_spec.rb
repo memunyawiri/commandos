@@ -5,7 +5,7 @@ describe Cat do
 
   describe 'initialisation' do
     it 'throws an error if the tip file does not exist' do
-      expect { Cat.new('nonexistent_cd.txt') }.to raise_error(Errno::ENOENT)
+      expect { Cat.new('nonexistent_cat.txt') }.to raise_error(Errno::ENOENT)
     end
   end
 
