@@ -6,8 +6,10 @@ class Cat
 
   def suggest_tips(arguments)
     options = []
+    arguments = arguments.gsub(/\s\w+\.txt|.md/, " ")
     arguments.split('-').each do |option|
       option.each_char do |char|
+        p char
         options << char
       end
     end
