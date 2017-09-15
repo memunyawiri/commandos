@@ -4,7 +4,7 @@ class Touch
     load_tips(filename)
   end
 
-  def suggest_tips(arguments)
+  def suggest_tips(_arguments)
     @tips[:rm]
   end
 
