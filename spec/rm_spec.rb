@@ -16,4 +16,18 @@ describe Rm do
       end
     end
   end
+
+  describe 'Tip for "i" flag' do
+    it 'suggests using -i option when it is not used' do
+      expect(rm.suggest_tips('-r test_file').include?(tips[:i])).to be true
+    end
+
+    it 'does not suggest using -i option when already used in an individual format' do
+      expect(rm.suggest_tips('-r -i test_file').include?(tips[:i])).to be false
+    end
+
+    it 'does not suggest using -i option when already used in a combined format' do
+      expect(rm.suggest_tips('-ri test_file').include?(tips[:i])).to be false
+    end
+  end
 end
