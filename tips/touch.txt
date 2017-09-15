@@ -1,0 +1,1 @@
+rm:Did you know, you can run rm filename to delete unwanted files.

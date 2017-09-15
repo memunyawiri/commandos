@@ -2,8 +2,10 @@
   676  rspec
   677  git status
   678  git add .
-  679  git status
+  679  cat file_name.txt
   680  git commit -m "Passed first test"
   681  git push
   682  ls -la
   683  cd ruby-kickstart
+  684  touch ruby-kickstart
+  685  mkdir ruby-kickstart
