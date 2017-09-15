@@ -1,0 +1,1 @@
+i:Use rm -ri to receive a prompt before you permanently delete the directory and all its files.

@@ -1,8 +1,10 @@
 require_relative 'flags'
-# this class loads a file of tips for the cat command.
-class Cat
+
+# Rm class suggests tips for rm command
+class Rm
   include Flags
-  def initialize(filename = 'tips/cat.txt')
+
+  def initialize(filename = 'tips/ls.txt')
     load_tips(filename)
   end
 
@@ -27,14 +29,10 @@ class Cat
   end
 
   def combine_tips(options)
-    [] << check_for_b(options) << check_for_n(options)
+    [] << check_for_i(options)
   end
 
-  def check_for_b(options)
-    return @tips[:b] unless options.include?('b')
-  end
-
-  def check_for_n(options)
-    return @tips[:n] unless options.include?('n')
+  def check_for_i(options)
+    return @tips[:i] unless options.include?('i')
   end
 end
