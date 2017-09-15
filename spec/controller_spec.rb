@@ -31,7 +31,6 @@ describe Controller do
       controller.scan_for_commands
     end
 
-
     it 'can find cat command' do
       expect(cat).to receive(:suggest_tips).with('file_name.txt')
       controller.scan_for_commands
@@ -41,7 +40,7 @@ describe Controller do
       expect(mkdir).to receive(:suggest_tips).with('ruby-kickstart')
       controller.scan_for_commands
     end
-    
+
     it 'can find touch command' do
       expect(touch).to receive(:suggest_tips).with('ruby-kickstart')
       controller.scan_for_commands
