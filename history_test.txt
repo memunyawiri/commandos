@@ -1,3 +1,4 @@
+  675  mv filename.txt newfilename.txt
   676  rspec
   677  git status
   678  git add .

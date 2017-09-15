@@ -3,13 +3,13 @@ require 'controller'
 describe Controller do
   let!(:ls) { double(:ls, suggest_tips: []) }
   let!(:cd) { double(:cd, suggest_tips: []) }
-
+  let!(:mv) { double(:mv, suggest_tips: []) }
   let!(:cat) { double(:cat, suggest_tips: []) }
   let!(:touch) { double(:touch, suggest_tips: []) }
   let!(:mkdir) { double(:mkdir, suggest_tips: []) }
   let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: []) }
   let!(:printer) { double(:printer, output: []) }
-  let!(:instances) { { ls: ls, cd: cd, mkdir: mkdir, touch: touch, cat: cat } }
+  let!(:instances) { { ls: ls, cd: cd, mkdir: mkdir, touch: touch, cat: cat, mv: mv } }
   subject(:controller) do
     described_class.new('history_test.txt', instances, tips_sanitiser, printer)
   end
@@ -28,6 +28,11 @@ describe Controller do
 
     it 'can find cd command' do
       expect(cd).to receive(:suggest_tips).with('ruby-kickstart')
+      controller.scan_for_commands
+    end
+
+    it 'can find mv command' do
+      expect(mv).to receive(:suggest_tips).with('filename.txt newfilename.txt')
       controller.scan_for_commands
     end
 
