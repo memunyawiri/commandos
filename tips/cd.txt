@@ -1,3 +1,3 @@
 hyphen:You can switch between 2 directories using cd -
-tilde_or_empty:Did you know that you return to your home directory using cd ~ or just cd
-forward_slash:Need to go to the very base of the file system? That’s what the forward slash is for: cd /
+tilde_or_empty:You can return to your home directory using cd ~ or just cd
+forward_slash:Need to go to the very base of the file system? That’s what cd / (forward slash) is for.
