@@ -4,6 +4,10 @@ class Touch
     load_tips(filename)
   end
 
+  def suggest_tip(arguments)
+    check_for_rm(arguments.strip)
+  end
+
   def tips
     @tips.dup
   end
@@ -20,4 +24,7 @@ class Touch
     end
   end
 
+  def check_for_rm(options)
+    return @tips[:rm] unless options.empty? || options.include?('rm')
+  end
 end
