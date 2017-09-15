@@ -4,7 +4,7 @@ require_relative 'flags'
 class Rm
   include Flags
 
-  def initialize(filename = 'tips/ls.txt')
+  def initialize(filename = 'tips/rm.txt')
     load_tips(filename)
   end
 
