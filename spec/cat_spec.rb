@@ -1,6 +1,7 @@
 require 'cat'
 describe Cat do
   subject(:cat) { described_class.new('tips/cat.txt') }
+  let!(:filename) { 'tips/cat.txt' }
   let!(:tips) { cat.tips }
 
   describe 'initialisation' do
@@ -11,7 +12,9 @@ describe Cat do
 
   describe '#tips' do
     it 'loads the tips' do
-      expect(cat.tips.count).to file.readlines.size
+      File.open(filename, 'r') do |file|
+        expect(cat.tips.count).to eq file.readlines.size
+      end
     end
   end
 
