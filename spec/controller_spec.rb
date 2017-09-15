@@ -7,7 +7,9 @@ describe Controller do
   let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: []) }
   let!(:printer) { double(:printer, output: []) }
   let!(:instances) { { ls: ls, cd: cd, touch: touch } }
-  subject(:controller) { described_class.new('history_test.txt', instances, tips_sanitiser, printer) }
+  subject(:controller) do
+    described_class.new('history_test.txt', instances, tips_sanitiser, printer)
+  end
   let!(:controller2) { described_class.new('nonexistent_history.txt') }
 
   describe '#scan_for_commands' do

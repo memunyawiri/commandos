@@ -20,9 +20,5 @@ describe Touch do
     it 'suggests using rm with a filename when touch is used' do
       expect(touch.suggest_tips('ruby-kickstart')).to eq(tips[:rm])
     end
-
-    it 'does not suggest using the rm option when it has already been used' do
-      expect(touch.suggest_tips('rm')).not_to eq(tips[:rm])
-    end
   end
 end

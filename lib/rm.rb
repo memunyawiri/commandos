@@ -1,11 +1,15 @@
-# Touch class suggests tips for touch command
-class Touch
-  def initialize(filename = 'tips/touch.txt')
+require_relative 'flags'
+
+# Rm class suggests tips for rm command
+class Rm
+  include Flags
+
+  def initialize(filename = 'tips/ls.txt')
     load_tips(filename)
   end
 
   def suggest_tips(arguments)
-    @tips[:rm]
+    combine_tips(extract_flags(arguments))
   end
 
   def tips
@@ -22,5 +26,13 @@ class Touch
         @tips[key.to_sym] = value
       end
     end
+  end
+
+  def combine_tips(options)
+    [] << check_for_i(options)
+  end
+
+  def check_for_i(options)
+    return @tips[:i] unless options.include?('i')
   end
 end
