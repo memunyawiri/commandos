@@ -22,7 +22,7 @@ describe Touch do
     end
 
     it 'does not suggest using the rm option when it has already been used' do
-      expect(touch.suggest_tips('rm ')).not_to eq(tips[:rm])
+      expect(touch.suggest_tips('rm')).not_to eq(tips[:rm])
     end
   end
 end
