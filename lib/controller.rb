@@ -3,29 +3,35 @@ require_relative 'tips_sanitiser'
 class Controller
   COMMANDS = %i[ls cd].freeze
 
-  def initialize(filename, instances = {}, sanitiser = TipsSanitiser.new)
-    @sanitiser = sanitiser
-    @tips = []
-    @file = File.open(filename, 'r')
+  def initialize(filename, instances = {}, sanitiser = TipsSanitiser.new, printer = Printer.new)
+    @filename = filename
     load_command_instances(instances)
+    @sanitiser = sanitiser
+    @printer = printer
+    @tips = []
   end
 
   def scan_for_commands
-    file.readlines.each do |line|
-      _id, command, arguments = extract_id_command_arguments(line)
-      next unless COMMANDS.include?(command.to_sym)
-      @tips << @instances[command.to_sym].suggest_tips(arguments.to_s)
+    File.open(filename, 'r') do |file|
+      file.readlines.each do |line|
+        _id, command, arguments = extract_id_command_arguments(line)
+        next unless COMMANDS.include?(command.to_sym)
+        @tips << instances[command.to_sym].suggest_tips(arguments.to_s)
+      end
     end
-    @tips = @tips.flatten
   end
 
   def sanitise
-    @tips = @sanitiser.sanitise(@tips)
+    @tips = sanitiser.sanitise(tips.flatten)
+  end
+
+  def output(output_type)
+    printer.output(tips, output_type)
   end
 
   private
 
-  attr_reader :file
+  attr_reader :filename, :instances, :sanitiser, :printer, :tips
 
   def load_command_instances(instances)
     @instances = {}
