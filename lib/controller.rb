@@ -2,7 +2,7 @@ require_relative 'tips_sanitiser'
 require_relative 'printer'
 # Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
-  COMMANDS = %i[ls cd].freeze
+  COMMANDS = %i[ls cd mkdir].freeze
 
   def initialize(filename, instances = {}, sanitiser = TipsSanitiser.new, printer = Printer.new)
     @filename = filename

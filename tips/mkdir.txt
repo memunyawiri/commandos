@@ -1,0 +1,2 @@
+rmdir:You can delete empty directories using rmdir
+open:You can open your current directory in finder with open .
