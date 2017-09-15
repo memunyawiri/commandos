@@ -4,6 +4,16 @@ class Cat
     load_tips(filename)
   end
 
+  def suggest_tips(arguments)
+    options = []
+    arguments.split('-').each do |option|
+      option.each_char do |char|
+        options << char
+      end
+    end
+    combine_tips(options)
+  end
+
   def tips
     @tips.dup
   end
@@ -18,5 +28,17 @@ class Cat
         @tips[key.to_sym] = value
       end
     end
+  end
+
+  def combine_tips(options)
+    [] << check_for_b(options) << check_for_n(options)
+  end
+
+  def check_for_b(options)
+    return @tips[:b] unless options.include?('b')
+  end
+
+  def check_for_n(options)
+    return @tips[:n] unless options.include?('n')
   end
 end
