@@ -3,9 +3,10 @@ require 'controller'
 describe Controller do
   let!(:ls) { double(:ls, suggest_tips: []) }
   let!(:cd) { double(:cd, suggest_tips: []) }
+  let!(:cat) { double(:cat, suggest_tips: []) }
   let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: []) }
   let!(:printer) { double(:printer, output: []) }
-  let!(:instances) { { ls: ls, cd: cd } }
+  let!(:instances) { { ls: ls, cd: cd, cat: cat } }
   subject(:controller) { described_class.new('history_test.txt', instances, tips_sanitiser, printer) }
   let!(:controller2) { described_class.new('nonexistent_history.txt') }
 
@@ -21,6 +22,11 @@ describe Controller do
 
     it 'can find cd command' do
       expect(cd).to receive(:suggest_tips).with('ruby-kickstart')
+      controller.scan_for_commands
+    end
+
+    it 'can find cat command' do
+      expect(cat).to receive(:suggest_tips).with("file_name.txt")
       controller.scan_for_commands
     end
   end
