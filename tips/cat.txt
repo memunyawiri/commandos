@@ -1,0 +1,2 @@
+b:Did you know that cat -b will print a line number next to each non-blank line in a file.
+n:The command cat -n will print line numbers next to each line in a file.

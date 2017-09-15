@@ -3,14 +3,17 @@ require 'controller'
 describe Controller do
   let!(:ls) { double(:ls, suggest_tips: []) }
   let!(:cd) { double(:cd, suggest_tips: []) }
+
+  let!(:cat) { double(:cat, suggest_tips: []) }
   let!(:touch) { double(:touch, suggest_tips: []) }
   let!(:mkdir) { double(:mkdir, suggest_tips: []) }
   let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: []) }
   let!(:printer) { double(:printer, output: []) }
-  let!(:instances) { { ls: ls, cd: cd, mkdir: mkdir, touch: touch } }
+  let!(:instances) { { ls: ls, cd: cd, mkdir: mkdir, touch: touch, cat: cat } }
   subject(:controller) do
     described_class.new('history_test.txt', instances, tips_sanitiser, printer)
   end
+
   let!(:controller2) { described_class.new('nonexistent_history.txt') }
 
   describe '#scan_for_commands' do
@@ -28,15 +31,20 @@ describe Controller do
       controller.scan_for_commands
     end
 
+    it 'can find cat command' do
+      expect(cat).to receive(:suggest_tips).with('file_name.txt')
+      controller.scan_for_commands
+    end
+
     it 'can find mkdir command' do
       expect(mkdir).to receive(:suggest_tips).with('ruby-kickstart')
       controller.scan_for_commands
     end
-  end
 
-  it 'can find touch command' do
-    expect(touch).to receive(:suggest_tips).with('ruby-kickstart')
-    controller.scan_for_commands
+    it 'can find touch command' do
+      expect(touch).to receive(:suggest_tips).with('ruby-kickstart')
+      controller.scan_for_commands
+    end
   end
 
   describe '#sanitise' do
