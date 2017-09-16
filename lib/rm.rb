@@ -18,7 +18,7 @@ class Rm
   private
 
   def combine_tips(options)
-    [check_for_i(options), check_for_ri(options), check_for_v(options)]
+    [check_for_i(options), check_for_ri(options), check_for_v(options), check_for_d(options)]
   end
 
   def check_for_i(options)
@@ -31,5 +31,9 @@ class Rm
 
   def check_for_v(options)
     return @tips[:v] unless options.include?('v')
+  end
+
+  def check_for_d(options)
+    return @tips[:d] unless options.include?('d')
   end
 end

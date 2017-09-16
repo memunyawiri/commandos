@@ -1,3 +1,4 @@
 i:Use rm -i to be prompted for confirmation before attempting to remove each file
 ri:Use rm -ri to be prompted for confirmation before each directory's contents are processed as well as before the attempt is made to remove the directory
 v:Use rm -v (for verbose) to show the name of the file as it is removed
+d:Use rm -d to attempt to remove directories as well as other types of files
