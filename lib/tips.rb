@@ -1,3 +1,4 @@
+# Tips module returns a hash created from the tips in the file
 module Tips
   def load_tips(filename)
     tips = {}
