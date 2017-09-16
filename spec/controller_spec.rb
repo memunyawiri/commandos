@@ -10,11 +10,12 @@ describe Controller do
   let!(:touch) { double(:touch, suggest_tips: []) }
   let!(:instances) { { cat: cat, cd: cd, ls: ls, mkdir: mkdir, mv: mv, rm: rm, touch: touch } }
 
-  let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: []) }
-  let!(:printer) { double(:printer, output: []) }
+  let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: ['tip one', 'tip two']) }
+  let!(:tips_selector) { double(:tips_selector, select_tip: 'tip two') }
+  let!(:printer) { double(:printer, output: nil) }
 
   subject(:controller) do
-    described_class.new('history_test.txt', instances, tips_sanitiser, printer)
+    described_class.new('history_test.txt', instances, tips_sanitiser, tips_selector, printer)
   end
 
   let!(:controller2) { described_class.new('nonexistent_history.txt') }
@@ -67,9 +68,18 @@ describe Controller do
     end
   end
 
+  describe '#select_tip' do
+    it 'calls the select_tip method of tips_selector' do
+      controller.sanitise
+      expect(tips_selector).to receive(:select_tip).with(['tip one', 'tip two'])
+      controller.select_tip
+    end
+  end
+
   describe '#output' do
-    it 'it calls the output method' do
-      expect(printer).to receive(:output)
+    it 'calls the output method' do
+      controller.select_tip
+      expect(printer).to receive(:output).with('tip two', 'print')
       controller.output('print')
     end
   end

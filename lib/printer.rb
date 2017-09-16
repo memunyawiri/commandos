@@ -4,16 +4,12 @@ class Printer
     @filename = filename
   end
 
-  def output(tips, output_type)
+  def output(tip, output_type)
     output_type = 'print' unless %w[print file speech].include?(output_type)
-    send("tips_to_#{output_type}", tip_decider(tips))
+    send("tips_to_#{output_type}", tip)
   end
 
   private
-
-  def tip_decider(tips)
-    tips.sample
-  end
 
   def tips_to_print(tip)
     puts tip
