@@ -1,11 +1,14 @@
+
 # Mv class suggests tips for mv command
 class Mv
+  include Flags
+  include Tips
   def initialize(filename = 'tips/mv.txt')
-    load_tips(filename)
+    @tips = load_tips(filename)
   end
 
   def suggest_tips(arguments)
-    combine_tips(arguments)
+    combine_tips(extract_flags(arguments))
   end
 
   def tips
@@ -14,21 +17,15 @@ class Mv
 
   private
 
-  def load_tips(filename)
-    @tips = {}
-    File.open(filename, 'r') do |file|
-      file.readlines.each do |line|
-        key, value = line.chomp.split(':', 2)
-        @tips[key.to_sym] = value
-      end
-    end
-  end
-
   def combine_tips(options)
-    [] << check_for_mv(options)
+    [] << check_for_mv(options) <<check_for_i(options)
   end
 
-  def check_for_mv(_options)
+  def check_for_mv(options)
     @tips[:mv]
+  end
+
+  def check_for_i(options)
+    @tips[:i] unless options.include?('i')
   end
 end

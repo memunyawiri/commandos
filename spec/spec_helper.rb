@@ -3,6 +3,7 @@ require 'aruba/api'
 require 'pathname'
 require 'simplecov'
 require 'simplecov-console'
+require_relative '../lib/controller.rb'
 
 Aruba.configure do |config|
   config.working_directory = 'output'

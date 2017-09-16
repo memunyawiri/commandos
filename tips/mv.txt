@@ -1,1 +1,2 @@
 mv:You can use mv to rename a file.
+i:Afraid of overwriting an existing file? Use the "-i" flag to receive a prompt.
