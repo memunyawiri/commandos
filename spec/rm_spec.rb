@@ -46,4 +46,14 @@ describe Rm do
       end
     end
   end
+
+  describe 'Tip for "v" flag' do
+    it 'suggests using -v option when it is not used' do
+      expect(rm.suggest_tips('test_file').include?(tips[:v])).to be true
+    end
+
+    it 'does not suggest using -v option with it is already used' do
+      expect(rm.suggest_tips('-v test_file').include?(tips[:v])).to be false
+    end
+  end
 end

@@ -1,4 +1,4 @@
-# Mkdir class suggests tips for cd command
+# Mkdir class suggests tips for mkdir command
 class Mkdir
   include Tips
 
