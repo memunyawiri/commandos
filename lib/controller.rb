@@ -1,5 +1,11 @@
-require_relative 'tips_sanitiser'
+# Collaborators here
 require_relative 'printer'
+require_relative 'tips_sanitiser'
+
+# Modules here
+require_relative 'flags'
+require_relative 'tips'
+
 # Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
   COMMANDS = %i[cat cd ls mkdir mv rm touch].freeze
@@ -44,7 +50,7 @@ class Controller
 
   def extract_id_command_arguments(line)
     id, rest = line.chomp.split('  ').reject { |part| part == '' }
-    command, arguments = rest.split(' ', 2)
+    command, arguments = rest.to_s.split(' ', 2)
     [id, command, arguments]
   end
 end
