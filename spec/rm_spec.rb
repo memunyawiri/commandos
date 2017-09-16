@@ -66,4 +66,14 @@ describe Rm do
       expect(rm.suggest_tips('-d test_file').include?(tips[:d])).to be false
     end
   end
+
+  describe 'Tip for "f" flag' do
+    it 'suggests using -f option when it is not used' do
+      expect(rm.suggest_tips('test_file').include?(tips[:f])).to be true
+    end
+
+    it 'does not suggest using -f option when already used in an individual format' do
+      expect(rm.suggest_tips('-f test_file').include?(tips[:f])).to be false
+    end
+  end
 end
