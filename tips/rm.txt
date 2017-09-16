@@ -3,3 +3,4 @@ ri:Use rm -ri to be prompted for confirmation before each directory's contents a
 v:Use rm -v (for verbose) to show the name of the file as it is removed
 d:Use rm -d to attempt to remove directories as well as other types of files
 f:Use rm -f (for force) to attempt to remove files without prompting for confirmation
+rf:**CAUTION** use rm -rf (for recursive force) to force-remove ALL files and folders inside the specified location without any prompt. Do NOT use with / 

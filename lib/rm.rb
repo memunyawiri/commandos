@@ -22,7 +22,8 @@ class Rm
      check_for_ri(options),
      check_for_v(options),
      check_for_d(options),
-     check_for_f(options)]
+     check_for_f(options),
+     check_for_rf(options)]
   end
 
   def check_for_i(options)
@@ -42,6 +43,10 @@ class Rm
   end
 
   def check_for_f(options)
-    return @tips[:f] unless options.include?('f')
+    return @tips[:f] unless !options.include?('r') && options.include?('f')
+  end
+
+  def check_for_rf(options)
+    return @tips[:rf] unless options.include?('r') && options.include?('f')
   end
 end

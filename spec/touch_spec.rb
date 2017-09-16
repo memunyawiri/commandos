@@ -7,7 +7,7 @@ describe Touch do
   let!(:filename) { 'tips/touch.txt' }
 
   describe 'initialisation' do
-    it 'throws and error if the touch tip file does not exist' do
+    it 'throws an error if the touch tip file does not exist' do
       expect { Touch.new('nonexistent_touch.txt') }.to raise_error(Errno::ENOENT)
     end
 
