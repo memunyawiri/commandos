@@ -1,8 +1,8 @@
 require 'tips_selector'
 
 describe TipsSelector do
-  subject(:tips_selector) { described_class.new('output/past_tips_test.txt') }
-  let!(:tips_selector2) { described_class.new('output/missing_past_tips_test.txt') }
+  subject(:tips_selector) { described_class.new('waited_tips_test.txt') }
+  let!(:tips_selector2) { described_class.new('missing_waited_tips_test.txt') }
 
   let!(:tips) do
     ['You can view more information about your files using ls -l',

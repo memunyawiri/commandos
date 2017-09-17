@@ -1,27 +1,27 @@
 class TipsSelector
-  def initialize(filename = 'output/past_tips.txt')
-    @filename = File.join(File.dirname(__FILE__), '..', filename)
+  def initialize(waited_file = 'waited_tips.txt')
+    @waited_file = File.join(File.dirname(__FILE__), '../output/', waited_file)
   end
 
   def select_tip(tips)
-    load_past_tips
-    random_waited_down_tip(tips)
+    load_waited_tips
+    random_non_waited_tip(tips)
   end
 
   private
 
-  attr_reader :filename, :past_tips
+  attr_reader :waited_file, :waited_tips
 
-  def load_past_tips
-    @past_tips = []
-    File.open(filename, 'r') do |file|
+  def load_waited_tips
+    @waited_tips = []
+    File.open(waited_file, 'r') do |file|
       file.readlines.each do |line|
-        @past_tips << line.chomp
+        @waited_tips << line.chomp
       end
     end
   end
 
-  def random_waited_down_tip(tips)
-    (tips - past_tips).sample
+  def random_non_waited_tip(tips)
+    (tips - waited_tips).sample
   end
 end
