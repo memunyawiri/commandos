@@ -20,7 +20,7 @@ describe Cat do
 
   describe '#suggest_tips' do
     it 'passes all of the tips if none of the flags or extensions are used' do
-      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n], tips[:>], tips[:head], tips[:tail]])
+      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n], tips[:>], tips[:head], tips[:tail], tips[:less]])
     end
 
     describe '-b flag suggestions' do
@@ -43,7 +43,7 @@ describe Cat do
       end
     end
 
-    describe 'Tip for right angle bracket "rab" aka file concatenator' do
+    describe 'Tip for > (right angle bracket) option' do
       it 'suggests tip for cat f1 f2 > f3 option when it is not used' do
         expect(cat.suggest_tips('belly_file.txt').include?(tips[:>])).to be true
       end
@@ -53,7 +53,7 @@ describe Cat do
       end
     end
 
-    describe 'Tip for head command' do
+    describe 'Tip for head option' do
       it 'suggests tip for head option when it is not used' do
         expect(cat.suggest_tips('belly_file.txt').include?(tips[:head])).to be true
       end
@@ -67,7 +67,7 @@ describe Cat do
       end
     end
 
-    describe 'Tip for tail command' do
+    describe 'Tip for tail option' do
      it 'suggests tip for tail option when it is not used' do
        expect(cat.suggest_tips('belly_file.txt').include?(tips[:tail])).to be true
      end
@@ -76,9 +76,23 @@ describe Cat do
        expect(cat.suggest_tips('next_party.txt | tail -6').include?(tips[:tail])).to be false
      end
 
-     it 'does not suggest using the tail option when already used in a filename' do
+     it 'does not misunderstand tail in a file name as tail option' do
        expect(cat.suggest_tips('tail_file').include?(tips[:tail])).to be true
      end
    end
+
+   describe 'Tip for less option' do
+      it 'suggests tip for less option when it is not used' do
+        expect(cat.suggest_tips('belly_file.txt').include?(tips[:less])).to be true
+      end
+
+      it 'does not suggest using less option when already in use' do
+        expect(cat.suggest_tips('next_party.txt | less').include?(tips[:less])).to be false
+      end
+
+      it 'does not misunderstand less in a file name as less option' do
+        expect(cat.suggest_tips('less_file.txt').include?(tips[:less])).to be true
+      end
+    end
   end
 end
