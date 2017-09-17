@@ -1,12 +1,12 @@
 require 'printer'
 
 describe Printer do
-  subject(:printer) { described_class.new(output_file, waited_file) }
+  subject(:printer) { described_class.new(output_file, waited_file, 5) }
   let(:output_file) { 'output_test.txt' }
   let(:waited_file) { 'waited_tips_test.txt' }
 
   let!(:tip) { 'You can use mv to rename a file.' }
-  let!(:waited_tips_test_file) do
+  let!(:waited_tips) do
     ['The command cat -n will print line numbers next to each line in a file.',
     'You can switch between 2 directories using cd -',
     'You can view more information about your files using ls -l',
@@ -16,7 +16,7 @@ describe Printer do
 
   describe 'output' do
     it 'prints the tip when output type is print' do
-      expect { printer.output(tip, 'print') }.to output("#{tip}\n").to_stdout
+      expect { printer.output(tip, 'print') }.to output("\e[32m#{tip}\e[0m\n").to_stdout
     end
 
     it 'writes the tip to the file when output type is file' do
@@ -29,23 +29,34 @@ describe Printer do
     # end
 
     it 'prints the tip when output type is not print/file/speech' do
-      expect { printer.output(tip, 'gobbledygook') }.to output("#{tip}\n").to_stdout
+      expect { printer.output(tip, 'gobbledygook') }.to output("\e[32m#{tip}\e[0m\n").to_stdout
     end
   end
 
   describe '#add_to_waited_tips' do
-    it 'adds the tip to the past tips file' do
-      printer.add_to_waited_tips(tip)
-      expect(waited_file).to have_file_content waited_tips_test_file.join("\n") + "\n" + tip
-      restore_waited_tips_file(waited_file, waited_tips_test_file)
+    context 'there are less than N tips in waiting' do
+      it 'adds the tip to the waiting tips file' do
+        write_to_file(waited_file, waited_tips[0..3]) # set up waiting file before test
+        printer.add_to_waited_tips(tip)
+        expect(waited_file).to have_file_content waited_tips[0..3].join("\n") + "\n" + tip
+        write_to_file(waited_file, waited_tips) # restore waititng file
+      end
+    end
+
+    context 'there are N tips in waiting' do
+      it 'adds the tip to the waiting tips file and removes the first tip' do
+        printer.add_to_waited_tips(tip)
+        expect(waited_file).to have_file_content waited_tips[1..4].join("\n") + "\n" + tip
+        write_to_file(waited_file, waited_tips) # restore waiting file
+      end
     end
   end
 end
 
-def restore_waited_tips_file(waited_file, waited_tips_test_file)
-  filename = File.join(File.dirname(__FILE__), '../output/', waited_file)
+def write_to_file(filename, records)
+  filename = File.join(File.dirname(__FILE__), '../output/', filename)
   File.open(filename, 'w') do |file|
-    waited_tips_test_file.each do |line|
+    records.each do |line|
       file.puts line
     end
   end
