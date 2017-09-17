@@ -18,11 +18,16 @@ class Mv
   private
 
   def combine_tips(options)
-    [] << check_for_mv(options) << check_for_i(options) <<
-      check_for_f(options) << check_for_flags_order(options)
+    checks = %w[mv i f flags_order n]
+    tips = []
+    checks.each do |check|
+      tip = send("check_for_#{check}", options)
+      tips << tip if tip
+    end
+    tips
   end
 
-  def check_for_mv(options)
+  def check_for_mv(_options)
     @tips[:mv]
   end
 
@@ -35,7 +40,12 @@ class Mv
   end
 
   def check_for_flags_order(options)
-    @tips[:flags_order] unless options.include?('if') && options.include?('fn') && options.include?('fv')
+    @tips[:flags_order] unless options.include?('if') &&
+                               options.include?('fn') &&
+                               options.include?('fv')
   end
 
+  def check_for_n(options)
+    @tips[:n] unless options.include?('n')
+  end
 end
