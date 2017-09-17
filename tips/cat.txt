@@ -2,3 +2,4 @@ b:Did you know that cat -b will print a line number next to each non-blank line 
 n:The command cat -n will print line numbers next to each line in a file.
 >:You can merge the contents of two files into a third file using cat file1 file2 > file3
 head:You can read the first n number of lines in a file by running head -n (replace n with your preferred number)
+tail:You can read the last n number of lines in a file by running tail -n (replace n with your preferred number)

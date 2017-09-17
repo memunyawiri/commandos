@@ -20,7 +20,7 @@ describe Cat do
 
   describe '#suggest_tips' do
     it 'passes all of the tips if none of the flags or extensions are used' do
-      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n], tips[:>], tips[:head]])
+      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n], tips[:>], tips[:head], tips[:tail]])
     end
 
     describe '-b flag suggestions' do
@@ -66,5 +66,19 @@ describe Cat do
         expect(cat.suggest_tips('head_file.txt').include?(tips[:head])).to be true
       end
     end
+
+    describe 'Tip for tail command' do
+     it 'suggests tip for tail option when it is not used' do
+       expect(cat.suggest_tips('belly_file.txt').include?(tips[:tail])).to be true
+     end
+
+     it 'does not suggest using tail option when already in use' do
+       expect(cat.suggest_tips('next_party.txt | tail -6').include?(tips[:tail])).to be false
+     end
+
+     it 'does not suggest using the tail option when already used in a filename' do
+       expect(cat.suggest_tips('tail_file').include?(tips[:tail])).to be true
+     end
+   end
   end
 end

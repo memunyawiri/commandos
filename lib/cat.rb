@@ -8,6 +8,7 @@ class Cat
   end
 
   def suggest_tips(arguments)
+    p arguments
     non_flags = arguments.split(" ").reject { |part| part[0] == '-'}
     combine_tips(extract_flags(arguments), non_flags)
   end
@@ -22,7 +23,8 @@ class Cat
     [check_for_b(flags),
      check_for_n(flags),
      check_for_rab(non_flags),
-     check_for_head(non_flags)]
+     check_for_head(non_flags),
+     check_for_tail(non_flags)]
   end
 
   def check_for_b(flags)
@@ -40,4 +42,8 @@ class Cat
   def check_for_head(arguments)
     return @tips[:head] unless arguments.include?('head')
   end
+
+  def check_for_tail(arguments)
+   return @tips[:tail] unless arguments.include?('tail')
+ end
 end
