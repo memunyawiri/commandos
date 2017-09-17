@@ -18,7 +18,8 @@ class Mv
   private
 
   def combine_tips(options)
-    [] << check_for_mv(options) <<check_for_i(options)
+    [] << check_for_mv(options) << check_for_i(options) <<
+      check_for_f(options) << check_for_flags_order(options)
   end
 
   def check_for_mv(options)
@@ -28,4 +29,13 @@ class Mv
   def check_for_i(options)
     @tips[:i] unless options.include?('i')
   end
+
+  def check_for_f(options)
+    @tips[:f] unless options.include?('f')
+  end
+
+  def check_for_flags_order(options)
+    @tips[:flags_order] unless options.include?('if') && options.include?('fn') && options.include?('fv')
+  end
+
 end
