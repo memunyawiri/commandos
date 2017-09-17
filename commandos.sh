@@ -1,2 +1,3 @@
-history 25 > history.txt
-ruby ./lib/commandos.rb history.txt
+history 1 > history.txt
+ruby ~/projects/commandos/lib/commandos.rb history.txt
+rm history.txt
