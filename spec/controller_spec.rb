@@ -12,7 +12,7 @@ describe Controller do
 
   let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: ['tip one', 'tip two']) }
   let!(:tips_selector) { double(:tips_selector, select_tip: 'tip two') }
-  let!(:printer) { double(:printer, output: nil) }
+  let!(:printer) { double(:printer, output: nil, add_to_waited_tips: nil) }
 
   subject(:controller) do
     described_class.new('history_test.txt', instances, tips_sanitiser, tips_selector, printer)
@@ -77,9 +77,15 @@ describe Controller do
   end
 
   describe '#output' do
-    it 'calls the output method' do
+    it 'calls the output method of printer' do
       controller.select_tip
       expect(printer).to receive(:output).with('tip two', 'print')
+      controller.output('print')
+    end
+
+    it 'calls the add_to_waited_tips method of printer' do
+      controller.select_tip
+      expect(printer).to receive(:add_to_waited_tips).with('tip two')
       controller.output('print')
     end
   end

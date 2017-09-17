@@ -39,7 +39,9 @@ class Controller
   end
 
   def output(output_type)
+    return if tip.empty? #Remove this once random tips are added
     printer.output(tip, output_type)
+    printer.add_to_waited_tips(tip)
   end
 
   private
