@@ -20,7 +20,7 @@ describe Cat do
 
   describe '#suggest_tips' do
     it 'passes all of the tips if none of the flags or extensions are used' do
-      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n], tips[:>]])
+      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n], tips[:>], tips[:head]])
     end
 
     describe '-b flag suggestions' do
@@ -50,6 +50,20 @@ describe Cat do
 
       it 'does not suggest using the > option when it is used' do
         expect(cat.suggest_tips('belly_file.txt > belly_file.txt belly_file.txt').include?(tips[:>])).to be false
+      end
+    end
+
+    describe 'Tip for head command' do
+      it 'suggests tip for head option when it is not used' do
+        expect(cat.suggest_tips('belly_file.txt').include?(tips[:head])).to be true
+      end
+
+      it 'does not suggest using head option when already in use' do
+        expect(cat.suggest_tips('next_party.txt | head -2').include?(tips[:head])).to be false
+      end
+
+      it 'does not misunderstand head in a file name as head option' do
+        expect(cat.suggest_tips('head_file.txt').include?(tips[:head])).to be true
       end
     end
   end
