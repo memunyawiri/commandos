@@ -19,11 +19,11 @@ describe Cat do
   end
 
   describe '#suggest_tips' do
-    it 'passes all of the tips if none of the flags are used' do
-      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n]])
+    it 'passes all of the tips if none of the flags or extensions are used' do
+      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n], tips[:>]])
     end
 
-    describe '-b flag sugestions' do
+    describe '-b flag suggestions' do
       it 'suggests the -b tip when it is not used' do
         expect(cat.suggest_tips('-n next_belly_file.txt').include?(tips[:b])).to be true
       end
@@ -40,6 +40,16 @@ describe Cat do
 
       it 'does not suggest using -n option when already used in an individual format' do
         expect(cat.suggest_tips('-n next_party.txt').include?(tips[:n])).to be false
+      end
+    end
+
+    describe 'Tip for right angle bracket "rab" aka file concatenator' do
+      it 'suggests tip for cat f1 f2 > f3 option when it is not used' do
+        expect(cat.suggest_tips('belly_file.txt').include?(tips[:>])).to be true
+      end
+
+      it 'does not suggest using the > option when it is used' do
+        expect(cat.suggest_tips('belly_file.txt > belly_file.txt belly_file.txt').include?(tips[:>])).to be false
       end
     end
   end
