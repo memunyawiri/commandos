@@ -1,17 +1,14 @@
 # Ls class suggests tips for ls command
 class Ls
+  include Flags
+  include Tips
+
   def initialize(filename = 'tips/ls.txt')
-    load_tips(filename)
+    @tips = load_tips(filename)
   end
 
   def suggest_tips(arguments)
-    options = []
-    arguments.split('-').each do |option|
-      option.each_char do |char|
-        options << char
-      end
-    end
-    combine_tips(options)
+    combine_tips(extract_flags(arguments))
   end
 
   def tips
@@ -19,16 +16,6 @@ class Ls
   end
 
   private
-
-  def load_tips(filename)
-    @tips = {}
-    File.open(filename, 'r') do |file|
-      file.readlines.each do |line|
-        key, value = line.chomp.split(':', 2)
-        @tips[key.to_sym] = value
-      end
-    end
-  end
 
   def combine_tips(options)
     [] << check_for_a(options) << check_for_l(options) << check_for_t(options)

@@ -1,9 +1,10 @@
-require_relative 'flags'
-# this class loads a file of tips for the cat command.
+# Cat class suggests tips for cat command
 class Cat
   include Flags
+  include Tips
+
   def initialize(filename = 'tips/cat.txt')
-    load_tips(filename)
+    @tips = load_tips(filename)
   end
 
   def suggest_tips(arguments)
@@ -15,16 +16,6 @@ class Cat
   end
 
   private
-
-  def load_tips(filename)
-    @tips = {}
-    File.open(filename, 'r') do |file|
-      file.readlines.each do |line|
-        key, value = line.chomp.split(':', 2)
-        @tips[key.to_sym] = value
-      end
-    end
-  end
 
   def combine_tips(options)
     [] << check_for_b(options) << check_for_n(options)

@@ -1,4 +1,4 @@
-# this module returns the flags and removes the filenames.
+# extract_flags method extracts only the flags and returns an array of individual flags
 module Flags
   def extract_flags(arguments)
     flags = arguments.split(' ').select { |part| part[0] == '-' }
