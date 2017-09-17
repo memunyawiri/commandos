@@ -1,4 +1,3 @@
-
 # Mv class suggests tips for mv command
 class Mv
   include Flags
@@ -18,7 +17,7 @@ class Mv
   private
 
   def combine_tips(options)
-    checks = %w[mv i f flags_order n]
+    checks = %w[mv i f flags_order n v]
     tips = []
     checks.each do |check|
       tip = send("check_for_#{check}", options)
@@ -40,12 +39,16 @@ class Mv
   end
 
   def check_for_flags_order(options)
-    @tips[:flags_order] unless options.include?('if') &&
+    @tips[:flags_order] unless options.include?('fi') &&
                                options.include?('fn') &&
                                options.include?('fv')
   end
 
   def check_for_n(options)
     @tips[:n] unless options.include?('n')
+  end
+
+  def check_for_v(options)
+    @tips[:v] unless options.include?('v')
   end
 end

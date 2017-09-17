@@ -10,7 +10,7 @@ describe Mv do
     end
 
     it 'loads the tips' do
-      expect(mv.tips.count).to eq 5
+      expect(mv.tips.count).to eq 6
     end
   end
 
@@ -63,7 +63,7 @@ describe Mv do
       end
 
       it 'clarifies that the order of the options is important' do
-        suggested_tips = mv.suggest_tips('-fi test2.txt test3.txt')
+        suggested_tips = mv.suggest_tips('-if test2.txt test3.txt')
         expected_tip = tips[:flags_order]
         expect(suggested_tips.include?(expected_tip)).to be true
       end
@@ -85,6 +85,26 @@ describe Mv do
       it 'does not suggest using -n option when already used in a combined format' do
         suggested_tips = mv.suggest_tips('-fn test2.txt test3.txt')
         expected_tip = tips[:f]
+        expect(suggested_tips.include?(expected_tip)).to be false
+      end
+    end
+
+    describe 'Tip for "v" flag' do
+      it 'suggests tip for the -v option' do
+        suggested_tips = mv.suggest_tips('test2.txt test3.txt')
+        expected_tip = tips[:v]
+        expect(suggested_tips.include?(expected_tip)).to be true
+      end
+
+      it 'does not suggest using -v option when already used in an individual format' do
+        suggested_tips = mv.suggest_tips('-v test2.txt test3.txt')
+        expected_tip = tips[:v]
+        expect(suggested_tips.include?(expected_tip)).to be false
+      end
+
+      it 'does not suggest using -n option when already used in a combined format' do
+        suggested_tips = mv.suggest_tips('-fv test2.txt test3.txt')
+        expected_tip = tips[:v]
         expect(suggested_tips.include?(expected_tip)).to be false
       end
     end
