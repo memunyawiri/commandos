@@ -20,7 +20,7 @@ describe Touch do
 
   describe 'Tip for rm' do
     it 'suggests using rm with a filename when touch is used' do
-      expect(touch.suggest_tips('ruby-kickstart')).to eq(tips[:rm])
+      expect(touch.suggest_tips('ruby-kickstart').include?(tips[:rm])).to be true
     end
   end
 end
