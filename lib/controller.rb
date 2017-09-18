@@ -9,7 +9,7 @@ require_relative 'tips'
 
 # Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
-  COMMANDS = %i[cat cd ls mkdir mv rm touch git].freeze
+  COMMANDS = %i[cat cd git ls mkdir mv rm touch].freeze
 
   def initialize(filename, instances = {}, sanitiser = nil, selector = nil, printer = nil)
     @filename = filename

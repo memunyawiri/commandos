@@ -8,7 +8,7 @@ class Cat
   end
 
   def suggest_tips(arguments)
-    non_flags = arguments.split(" ").reject { |part| part[0] == '-'}
+    non_flags = arguments.split(' ').reject { |part| part[0] == '-' }
     combine_tips(extract_flags(arguments), non_flags)
   end
 
@@ -47,7 +47,7 @@ class Cat
     return @tips[:tail] unless arguments.include?('tail')
   end
 
- def check_for_less(arguments)
-   return @tips[:less] unless arguments.include?('less')
- end
+  def check_for_less(arguments)
+    return @tips[:less] unless arguments.include?('less')
+  end
 end
