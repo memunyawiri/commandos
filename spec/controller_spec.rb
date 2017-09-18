@@ -8,7 +8,8 @@ describe Controller do
   let!(:mv) { double(:mv, suggest_tips: []) }
   let!(:rm) { double(:mv, suggest_tips: []) }
   let!(:touch) { double(:touch, suggest_tips: []) }
-  let!(:instances) { { cat: cat, cd: cd, ls: ls, mkdir: mkdir, mv: mv, rm: rm, touch: touch } }
+  let!(:git) { double(:git, suggest_tips: []) }
+  let!(:instances) { { cat: cat, cd: cd, ls: ls, mkdir: mkdir, mv: mv, rm: rm, touch: touch, git: git } }
 
   let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: ['tip one', 'tip two']) }
   let!(:tips_selector) { double(:tips_selector, select_tip: 'tip two') }
@@ -23,6 +24,11 @@ describe Controller do
   describe '#scan_for_commands' do
     it 'throws an error if the history file does not exist' do
       expect { controller2.scan_for_commands }.to raise_error(Errno::ENOENT)
+    end
+
+    it 'can find git command' do
+      expect(git).to receive(:suggest_tips).with('branch')
+      controller.scan_for_commands
     end
 
     it 'can find ls command' do

@@ -1,0 +1,2 @@
+log:The command 'git log' will show you all previous commits.
+branch:Adding the flag '-r' to a 'branch' command will show you remote branches too.
