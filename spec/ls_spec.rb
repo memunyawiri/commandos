@@ -12,7 +12,7 @@ describe Ls do
 
     it 'loads the tips' do
       File.open(filename, 'r') do |file|
-        expect(ls.tips.count).to eq file.readlines.size
+        expect(tips.count).to eq file.readlines.size
       end
     end
   end
@@ -20,7 +20,7 @@ describe Ls do
   describe '#suggest_tips' do
     describe 'Edge cases' do
       it 'passes all of the tips if none of the flags are used' do
-        expect(ls.suggest_tips('')).to eq([tips[:a], tips[:l], tips[:t]])
+        expect(ls.suggest_tips('')).to eq(tips.values)
       end
     end
 

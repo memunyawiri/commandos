@@ -12,7 +12,7 @@ describe Git do
 
     it 'loads the tips' do
       File.open(filename, 'r') do |file|
-        expect(git.tips.count).to eq file.readlines.size
+        expect(tips.count).to eq file.readlines.size
       end
     end
   end
@@ -30,7 +30,7 @@ describe Git do
 
     describe 'Tip for log' do
       it 'suggests using log when git is used' do
-        expect(git.suggest_tips('').include?(tips[:log])).to be true
+        expect(git.suggest_tips('push').include?(tips[:log])).to be true
       end
 
       it 'does not suggest using log tip when log is used' do

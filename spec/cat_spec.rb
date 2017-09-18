@@ -13,7 +13,7 @@ describe Cat do
   describe '#tips' do
     it 'loads the tips' do
       File.open(filename, 'r') do |file|
-        expect(cat.tips.count).to eq file.readlines.size
+        expect(tips.count).to eq file.readlines.size
       end
     end
   end
