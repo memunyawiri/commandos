@@ -11,8 +11,10 @@ describe Touch do
       expect { Touch.new('nonexistent_touch.txt') }.to raise_error(Errno::ENOENT)
     end
 
-    it 'loads the tip' do
-      expect(touch.tips.count).to eq(1)
+    it 'loads the tips' do
+      File.open(filename, 'r') do |file|
+        expect(tips.count).to eq file.readlines.size
+      end
     end
   end
 

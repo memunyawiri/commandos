@@ -1,1 +1,6 @@
 mv:You can use mv to rename a file.
+i:Afraid of overwriting an existing file? Use the "-i" flag to receive a prompt.
+f:Use the "-f" flag to overwrite the destination.
+flags_order:The last flag overrides the action of the precedent.
+n:Use "-n" to make sure you don't overwrite existing destination file.
+v:The "-v" will show the file you moved in it’s new path(verbose).

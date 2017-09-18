@@ -1,1 +1,0 @@
-You can switch between 2 directories using cd -

@@ -8,13 +8,15 @@ describe Controller do
   let!(:mv) { double(:mv, suggest_tips: []) }
   let!(:rm) { double(:mv, suggest_tips: []) }
   let!(:touch) { double(:touch, suggest_tips: []) }
-  let!(:instances) { { cat: cat, cd: cd, ls: ls, mkdir: mkdir, mv: mv, rm: rm, touch: touch } }
+  let!(:git) { double(:git, suggest_tips: []) }
+  let!(:instances) { { cat: cat, cd: cd, ls: ls, mkdir: mkdir, mv: mv, rm: rm, touch: touch, git: git } }
 
-  let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: []) }
-  let!(:printer) { double(:printer, output: []) }
+  let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: ['tip one', 'tip two']) }
+  let!(:tips_selector) { double(:tips_selector, select_tip: 'tip two') }
+  let!(:printer) { double(:printer, output: nil, add_to_waited_tips: nil) }
 
   subject(:controller) do
-    described_class.new('history_test.txt', instances, tips_sanitiser, printer)
+    described_class.new('history_test.txt', instances, tips_sanitiser, tips_selector, printer)
   end
 
   let!(:controller2) { described_class.new('nonexistent_history.txt') }
@@ -22,6 +24,11 @@ describe Controller do
   describe '#scan_for_commands' do
     it 'throws an error if the history file does not exist' do
       expect { controller2.scan_for_commands }.to raise_error(Errno::ENOENT)
+    end
+
+    it 'can find git command' do
+      expect(git).to receive(:suggest_tips).with('branch')
+      controller.scan_for_commands
     end
 
     it 'can find ls command' do
@@ -67,9 +74,24 @@ describe Controller do
     end
   end
 
+  describe '#select_tip' do
+    it 'calls the select_tip method of tips_selector' do
+      controller.sanitise
+      expect(tips_selector).to receive(:select_tip).with(['tip one', 'tip two'])
+      controller.select_tip
+    end
+  end
+
   describe '#output' do
-    it 'it calls the output method' do
-      expect(printer).to receive(:output)
+    it 'calls the output method of printer' do
+      controller.select_tip
+      expect(printer).to receive(:output).with('tip two', 'print')
+      controller.output('print')
+    end
+
+    it 'calls the add_to_waited_tips method of printer' do
+      controller.select_tip
+      expect(printer).to receive(:add_to_waited_tips).with('tip two')
       controller.output('print')
     end
   end

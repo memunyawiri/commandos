@@ -1,6 +1,6 @@
   675  mv filename.txt newfilename.txt
   676  rspec
-  677  git status
+  677  git branch
   678  git add .
   679  cat file_name.txt
   680  git commit -m "Passed first test"
