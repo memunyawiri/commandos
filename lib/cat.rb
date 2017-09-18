@@ -1,4 +1,4 @@
-# this class loads a file of tips for the cat command.
+# Cat class suggests tips for cat command
 class Cat
   include Flags
   include Tips

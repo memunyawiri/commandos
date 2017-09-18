@@ -1,7 +1,9 @@
 # Cd class suggests tips for cd command
 class Cd
+  include Tips
+
   def initialize(filename = 'tips/cd.txt')
-    load_tips(filename)
+    @tips = load_tips(filename)
   end
 
   def suggest_tips(arguments)
@@ -13,16 +15,6 @@ class Cd
   end
 
   private
-
-  def load_tips(filename)
-    @tips = {}
-    File.open(filename, 'r') do |file|
-      file.readlines.each do |line|
-        key, value = line.chomp.split(':', 2)
-        @tips[key.to_sym] = value
-      end
-    end
-  end
 
   def combine_tips(options)
     [check_for_hyphen(options),

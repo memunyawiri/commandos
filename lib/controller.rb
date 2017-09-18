@@ -1,6 +1,7 @@
 # Collaborators here
 require_relative 'printer'
 require_relative 'tips_sanitiser'
+require_relative 'tips_selector'
 
 # Modules here
 require_relative 'flags'
@@ -10,11 +11,12 @@ require_relative 'tips'
 class Controller
   COMMANDS = %i[cat cd ls mkdir mv rm touch git].freeze
 
-  def initialize(filename, instances = {}, sanitiser = TipsSanitiser.new, printer = Printer.new)
+  def initialize(filename, instances = {}, sanitiser = nil, selector = nil, printer = nil)
     @filename = filename
     load_command_instances(instances)
-    @sanitiser = sanitiser
-    @printer = printer
+    @sanitiser = sanitiser || TipsSanitiser.new
+    @selector = selector || TipsSelector.new
+    @printer = printer || Printer.new
     @tips = []
   end
 
@@ -32,13 +34,18 @@ class Controller
     @tips = sanitiser.sanitise(tips.flatten)
   end
 
+  def select_tip
+    @tip = selector.select_tip(tips)
+  end
+
   def output(output_type)
-    printer.output(tips, output_type)
+    printer.output(tip, output_type)
+    printer.add_to_waited_tips(tip)
   end
 
   private
 
-  attr_reader :filename, :instances, :sanitiser, :printer, :tips
+  attr_reader :filename, :instances, :sanitiser, :selector, :printer, :tips, :tip
 
   def load_command_instances(instances)
     @instances = {}
