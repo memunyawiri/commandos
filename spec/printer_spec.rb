@@ -8,10 +8,10 @@ describe Printer do
   let!(:tip) { 'You can use mv to rename a file.' }
   let!(:waited_tips) do
     ['The command cat -n will print line numbers next to each line in a file.',
-    'You can switch between 2 directories using cd -',
-    'You can view more information about your files using ls -l',
-    'You can open your current directory in finder with open .',
-    'Use rm -i to be prompted for confirmation before attempting to remove each file']
+     'You can switch between 2 directories using cd -',
+     'You can view more information about your files using ls -l',
+     'You can open your current directory in finder with open .',
+     'Use rm -i to be prompted for confirmation before attempting to remove each file']
   end
 
   describe 'output' do
