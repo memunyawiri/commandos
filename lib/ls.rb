@@ -8,28 +8,11 @@ class Ls
   end
 
   def suggest_tips(arguments)
-    combine_tips(extract_flags(arguments))
+    flags = extract_flags(arguments)
+    tips.map { |key, value| value unless flags.include?(key.to_s) }
   end
 
   def tips
     @tips.dup
-  end
-
-  private
-
-  def combine_tips(options)
-    [] << check_for_a(options) << check_for_l(options) << check_for_t(options)
-  end
-
-  def check_for_t(options)
-    return @tips[:t] unless options.include?('t')
-  end
-
-  def check_for_l(options)
-    return @tips[:l] unless options.include?('l')
-  end
-
-  def check_for_a(options)
-    return @tips[:a] unless options.include?('a')
   end
 end

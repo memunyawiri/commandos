@@ -7,7 +7,7 @@ class Mkdir
   end
 
   def suggest_tips(_arguments)
-    [@tips[:rmdir], @tips[:open]]
+    tips.values
   end
 
   def tips
