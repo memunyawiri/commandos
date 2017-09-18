@@ -1,7 +1,7 @@
 require 'mkdir'
 
 describe Mkdir do
-  subject(:mkdir) { described_class.new(filename) }
+  subject(:mkdir) { described_class.new }
   let!(:filename) { 'tips/mkdir.txt' }
   let!(:tips) { mkdir.tips }
 

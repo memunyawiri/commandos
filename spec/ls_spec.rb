@@ -1,7 +1,7 @@
 require 'ls'
 
 describe Ls do
-  subject(:ls) { described_class.new(filename) }
+  subject(:ls) { described_class.new }
   let!(:tips) { ls.tips }
   let!(:filename) { 'tips/ls.txt' }
 

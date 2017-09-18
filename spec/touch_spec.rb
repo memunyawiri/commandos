@@ -1,7 +1,7 @@
 require 'touch'
 
 describe Touch do
-  subject(:touch) { described_class.new(filename) }
+  subject(:touch) { described_class.new }
   let!(:tips) { touch.tips }
   let!(:all_tips) { tips[:rm] }
   let!(:filename) { 'tips/touch.txt' }

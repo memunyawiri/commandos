@@ -1,7 +1,7 @@
 require 'mv'
 
 describe Mv do
-  subject(:mv) { described_class.new('tips/mv.txt') }
+  subject(:mv) { described_class.new }
   let!(:tips) { mv.tips }
 
   describe 'initialization' do

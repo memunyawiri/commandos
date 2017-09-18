@@ -1,7 +1,7 @@
 require 'cd'
 
 describe Cd do
-  subject(:cd) { described_class.new(filename) }
+  subject(:cd) { described_class.new }
   let!(:filename) { 'tips/cd.txt' }
   let!(:tips) { cd.tips }
   let!(:all_tips) { [tips[:hyphen], tips[:tilde_or_empty], tips[:forward_slash]] }

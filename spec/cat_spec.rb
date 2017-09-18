@@ -1,6 +1,6 @@
 require 'cat'
 describe Cat do
-  subject(:cat) { described_class.new('tips/cat.txt') }
+  subject(:cat) { described_class.new }
   let!(:filename) { 'tips/cat.txt' }
   let!(:tips) { cat.tips }
 

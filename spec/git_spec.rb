@@ -1,7 +1,7 @@
 require "git"
 
 describe Git do
-  subject(:git) { described_class.new('tips/git.txt') }
+  subject(:git) { described_class.new }
   let!(:filename) { 'tips/git.txt' }
   let!(:tips) { git.tips }
 
