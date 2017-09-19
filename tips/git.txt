@@ -2,7 +2,6 @@ log:The command 'git log' will show you all previous commits.
 branch:Adding the flag '-r' to a 'branch' command will show you remote branches too.
 branchnomerged:Has that branch passed the pull request? How would I know! Use 'git branch --no-merged' to find out.
 addA:You can stage new, modified and deleted files using 'git add -A'
-addi:Enjoy interactive staging 'git add -i'
 add:You can stage all new and modified changes, except for deleted changes using 'git add .'
 addu:You can stage all modified and deleted files without new files using 'git add -u'
 checkout:You can undo the changes in <filename> since the last commit using `git checkout <filename>'
