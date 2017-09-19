@@ -9,7 +9,10 @@ describe Controller do
   let!(:rm) { double(:mv, suggest_tips: []) }
   let!(:touch) { double(:touch, suggest_tips: []) }
   let!(:git) { double(:git, suggest_tips: []) }
-  let!(:instances) { { cat: cat, cd: cd, ls: ls, mkdir: mkdir, mv: mv, rm: rm, touch: touch, git: git } }
+  let!(:instances) do
+    { cat: cat, cd: cd, git: git, ls: ls, mkdir: mkdir, mv: mv, rm: rm,
+      touch: touch }
+  end
 
   let!(:tips_sanitiser) { double(:tips_sanitiser, sanitise: ['tip one', 'tip two']) }
   let!(:tips_selector) { double(:tips_selector, select_tip: 'tip two') }

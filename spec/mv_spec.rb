@@ -2,6 +2,7 @@ require 'mv'
 
 describe Mv do
   subject(:mv) { described_class.new }
+  let!(:filename) { 'tips/mv.txt' }
   let!(:tips) { mv.tips }
 
   describe 'initialization' do
@@ -10,7 +11,9 @@ describe Mv do
     end
 
     it 'loads the tips' do
-      expect(mv.tips.count).to eq 6
+      File.open(filename, 'r') do |file|
+        expect(tips.count).to eq file.readlines.size
+      end
     end
   end
 

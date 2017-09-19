@@ -1,3 +1,4 @@
+# Git class suggests tips for cd command
 class Git
   include Tips
   include Flags
@@ -26,5 +27,4 @@ class Git
   def check_for_log(options)
     return @tips[:log] unless options.include?('log')
   end
-
 end

@@ -14,6 +14,9 @@ $ git clone https://github.com/BDCraven/commandos.git
 ```
 2. Add the following aliases in .bash_profile. You can find this file at cd ~
 ```
+alias commandos_start='source ~/Projects/commandos/script/commandos_start.sh'
+alias commandos_main='~/Projects/commandos/script/commandos_main.sh'
+alias commandos_stop='source ~/Projects/commandos/script/commandos_stop.sh'
 ```
 3. You may need to change the path in commandos/commandos.sh if you have chosen a folder other than ~/projects for commandos
 4. Exit the terminal and reopen

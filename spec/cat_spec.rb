@@ -13,14 +13,14 @@ describe Cat do
   describe '#tips' do
     it 'loads the tips' do
       File.open(filename, 'r') do |file|
-        expect(cat.tips.count).to eq file.readlines.size
+        expect(tips.count).to eq file.readlines.size
       end
     end
   end
 
   describe '#suggest_tips' do
     it 'passes all of the tips if none of the flags or extensions are used' do
-      expect(cat.suggest_tips('next_belly_file.txt')).to eq([tips[:b], tips[:n], tips[:>], tips[:head], tips[:tail], tips[:less]])
+      expect(cat.suggest_tips('next_belly_file.txt')).to eq(tips.values)
     end
 
     describe '-b flag suggestions' do
@@ -49,7 +49,7 @@ describe Cat do
       end
 
       it 'does not suggest using the > option when it is used' do
-        expect(cat.suggest_tips('belly_file.txt > belly_file.txt belly_file.txt').include?(tips[:>])).to be false
+        expect(cat.suggest_tips('belly_file.txt > belly_file.txt').include?(tips[:>])).to be false
       end
     end
 
@@ -68,20 +68,20 @@ describe Cat do
     end
 
     describe 'Tip for tail option' do
-     it 'suggests tip for tail option when it is not used' do
-       expect(cat.suggest_tips('belly_file.txt').include?(tips[:tail])).to be true
-     end
+      it 'suggests tip for tail option when it is not used' do
+        expect(cat.suggest_tips('belly_file.txt').include?(tips[:tail])).to be true
+      end
 
-     it 'does not suggest using tail option when already in use' do
-       expect(cat.suggest_tips('next_party.txt | tail -6').include?(tips[:tail])).to be false
-     end
+      it 'does not suggest using tail option when already in use' do
+        expect(cat.suggest_tips('next_party.txt | tail -6').include?(tips[:tail])).to be false
+      end
 
-     it 'does not misunderstand tail in a file name as tail option' do
-       expect(cat.suggest_tips('tail_file').include?(tips[:tail])).to be true
-     end
-   end
+      it 'does not misunderstand tail in a file name as tail option' do
+        expect(cat.suggest_tips('tail_file').include?(tips[:tail])).to be true
+      end
+    end
 
-   describe 'Tip for less option' do
+    describe 'Tip for less option' do
       it 'suggests tip for less option when it is not used' do
         expect(cat.suggest_tips('belly_file.txt').include?(tips[:less])).to be true
       end

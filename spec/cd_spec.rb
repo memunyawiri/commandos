@@ -4,7 +4,6 @@ describe Cd do
   subject(:cd) { described_class.new }
   let!(:filename) { 'tips/cd.txt' }
   let!(:tips) { cd.tips }
-  let!(:all_tips) { [tips[:hyphen], tips[:tilde_or_empty], tips[:forward_slash]] }
 
   describe 'initialisation' do
     it 'throws an error if the tip file does not exist' do
@@ -13,7 +12,7 @@ describe Cd do
 
     it 'loads the tips' do
       File.open(filename, 'r') do |file|
-        expect(cd.tips.count).to eq file.readlines.size
+        expect(tips.count).to eq file.readlines.size
       end
     end
   end
@@ -55,7 +54,7 @@ describe Cd do
 
     describe 'Serves all tips when cd -, cd ~, cd, cd / tips are inapplicable' do
       it 'passes all of the tips' do
-        expect(cd.suggest_tips('ruby-kickstart')).to eq(all_tips)
+        expect(cd.suggest_tips('ruby-kickstart')).to eq(tips.values)
       end
     end
   end
