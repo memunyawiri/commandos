@@ -1,7 +1,7 @@
 require 'touch'
 
 describe Touch do
-  subject(:touch) { described_class.new(filename) }
+  subject(:touch) { described_class.new }
   let!(:tips) { touch.tips }
   let!(:all_tips) { tips[:rm] }
   let!(:filename) { 'tips/touch.txt' }
@@ -20,7 +20,7 @@ describe Touch do
 
   describe 'Tip for rm' do
     it 'suggests using rm with a filename when touch is used' do
-      expect(touch.suggest_tips('ruby-kickstart')).to eq(tips[:rm])
+      expect(touch.suggest_tips('ruby-kickstart').include?(tips[:rm])).to be true
     end
   end
 end

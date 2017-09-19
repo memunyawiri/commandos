@@ -1,3 +1,5 @@
-hyphen:You can switch between 2 directories using cd -
-tilde_or_empty:You can return to your home directory using cd ~ or just cd
-forward_slash:Need to go to the very base of the file system? That’s what cd / (forward slash) is for.
+-:You can switch between 2 directories using cd -
+~:You can return to your home directory using cd ~ or just cd
+/:Need to go to the very base of the file system? That’s what cd / (forward slash) is for.
+!$:After creating a new directory using mkdir newdir, you can run cd !$ to change into that directory instead of cd newdir.
+*:Did you know that you could change into the first working directory within your parent directory using cd *
