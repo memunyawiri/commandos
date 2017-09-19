@@ -1,2 +1,5 @@
 rmdir:You can delete empty directories using rmdir
-open:You can open your current directory in finder with open .
+open:You can open your current directory in finder with open.
+p:If you ever need to create a series of nested directories you can run mkdir -p firstdir/secondir/...
+m:Did you know you can create a directory and set its permissions using mkdir -m followed by a permission argument e.g. a=rwx ?
+v:If you'd like to see your directories listed as you create them run mkdir -v foldername

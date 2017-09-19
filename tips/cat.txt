@@ -1,6 +1,8 @@
-b:Did you know that cat -b will print a line number next to each non-blank line in a file.
-n:The command cat -n will print line numbers next to each line in a file.
->:You can merge the contents of two files into a third file using cat file1 file2 > file3
-head:You can read the first n number of lines in a file by running head -n (replace n with your preferred number)
-tail:You can read the last n number of lines in a file by running tail -n (replace n with your preferred number)
-less:If you have a large file you want to scan through in the terminal, you can run less [filename] to scroll through it instead of having to use your keyboard.
+b:Did you know that cat -b [file] will number the non-blank output lines, starting at 1?
+e:Display non-printing characters and a dollar sign (`$') at the end of each line using cat -e [file].
+n:The command cat -n [file] will number the output lines, starting at 1.
+>:You can merge the contents of two files into a third file using cat file1 file2 > file3.
+>>:If you want to append the contents of one file to the end of another run cat file1 >> file2.
+head:You can read the first n number of lines in a file by running head -n [file] (replace n with your preferred number).
+tail:You can read the last n number of lines in a file by running tail -n [file] (replace n with your preferred number).
+less:If you have a large file you want to scan through in the terminal, you can run less [filename] and scroll page by page using the space bar.

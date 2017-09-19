@@ -7,7 +7,7 @@ class Touch
   end
 
   def suggest_tips(_arguments)
-    @tips[:rm]
+    tips.values
   end
 
   def tips

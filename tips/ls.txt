@@ -1,3 +1,6 @@
 a:You can view hidden files using ls -a
 l:You can view more information about your files using ls -l
 t:You can view files sorted by time modified (most recently modified first) using ls -t
+1:If you'd prefer not to see your files listed in column format, run ls -1 to list one entry per line
+R:You can also run ls -R to recursively list subdirectories
+S:You can view files sorted by size using ls -S
