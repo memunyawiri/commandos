@@ -1,10 +1,10 @@
-
-You can view hidden files using ls -a
-
-
-You can view more information about your files using ls -l
-
 You can view files sorted by time modified (most recently modified first) using ls -t
 Auto correct git typos and get meaningful suggestion for correction with 'git config --global help.autocorrect 1'
 Stash your local modifications and revert the working directory to match the HEAD commit with 'git stash'. Retrieve your stash with 'git stash pop'
 You can check the manual for a command using man; example 'man cp'
+Did you know that you can create your own shorten versions of the git commands using a git alias?This example shortens 'checkout' to 'co' ---> 'git config --global alias.co checkout'
+Show who changed each line of a file with 'git blame'
+Compare the differences between branches with 'git diff' and add the flag '-w' if the white space differences are distracting.
+You can stage all modified and deleted files without new files using 'git add -u'
+Undo/revert a specific commit with 'git revert <commit id>'
+You can stage all new and modified changes, except for deleted changes using 'git add .'
