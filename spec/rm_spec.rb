@@ -1,7 +1,7 @@
 require 'rm'
 
 describe Rm do
-  subject(:rm) { described_class.new(filename) }
+  subject(:rm) { described_class.new }
   let!(:filename) { 'tips/rm.txt' }
   let!(:tips) { rm.tips }
 

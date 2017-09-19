@@ -2,13 +2,10 @@
 module Tips
   def load_tips(filename)
     tips_file = File.join(File.dirname(__FILE__), '..', filename)
-    tips = {}
-    File.open(tips_file, 'r') do |file|
-      file.readlines.each do |line|
-        key, value = line.chomp.split(':', 2)
-        tips[key.to_sym] = value
-      end
+    file = File.open(tips_file, 'r')
+    file.readlines.each_with_object({}) do |line, tips|
+      key, value = line.chomp.split(':', 2)
+      tips[key.to_sym] = value
     end
-    tips
   end
 end

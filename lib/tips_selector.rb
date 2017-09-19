@@ -1,3 +1,4 @@
+# TipsSelector selects a tip that is not in the waited_file
 class TipsSelector
   def initialize(waited_file = 'waited_tips.txt')
     @waited_file = File.join(File.dirname(__FILE__), '../output/', waited_file)

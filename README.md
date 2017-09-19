@@ -23,6 +23,7 @@ $ git clone https://github.com/BDCraven/commandos.git
 3. Open `.bash_profile` with a text editor such as Atom. With Atom you can type `atom .bash_profile`
 
 4. Add the following aliases at the bottom of the `.bash_profile`. NB the aliases need to have the full path to the Commandos app so if you cloned the project in a different directory you will need to change the path of the aliases suggested here (however, do not delete `source` when updating the path). You can find the path of your Commandos directory by `cd` to it and typing `pwd`:
+
 ```
 alias commandos_start='source ~/Projects/commandos/script/commandos_start.sh'
 alias commandos_main='~/Projects/commandos/script/commandos_main.sh'
