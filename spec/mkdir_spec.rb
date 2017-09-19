@@ -29,5 +29,15 @@ describe Mkdir do
         expect(mkdir.suggest_tips('ruby-kickstart').include?(tips[:open])).to be true
       end
     end
+
+    describe 'Tips for any flag example: -p' do
+      it 'suggests using -p when it is not used' do
+        expect(mkdir.suggest_tips('ruby-kickstart').include?(tips[:p])).to be true
+      end
+
+      it 'does not suggest the tips for -p flag when it is used' do
+        expect(mkdir.suggest_tips('-p ruby-kickstart').include?(tips[:p])).to be false
+      end
+    end
   end
 end
