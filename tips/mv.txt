@@ -1,6 +1,8 @@
-mv:You can use mv to rename a file.
-i:Afraid of overwriting an existing file? Use the "-i" flag to receive a prompt.
-f:Use the "-f" flag to overwrite the destination.
-flags_order:The last flag overrides the action of the precedent.
-n:Use "-n" to make sure you don't overwrite existing destination file.
-v:The "-v" will show the file you moved in it’s new path(verbose).
+mv:You can also use 'mv' to rename a file 'mv <file.txt> <file2.txt>'
+i:Afraid of overwriting an existing file? Use the "-i" flag to receive a prompt
+f:Use the "-f" flag to not prompt for confirmation before overwriting the destination path, irrespective of file permissions
+n:Use "-n" to make sure you don't overwrite existing destination file
+v:The "-v" will show the file you moved in its new path(verbose)
+multi:Move multiple files 'mv <filename1> <filename2> <filename3> folder'
+wildcard:How about moving multiple files by using a pattern? Try 'mv *.txt /folder'
+movedir:In addition to moving files you can also move directories, Just like this 'mv <dir> </home/user/newdir>'
