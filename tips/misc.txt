@@ -9,3 +9,13 @@ gzip:You can use 'gzip <filename>' to compress and decompress files
 download:Download files or images straight to your project using 'curl -O http://www.domain.com/path/to/download.tar.gz'
 shutdown:So you're all done for the day and everything is saved and closed, save time and shut down from the terminal with  'sudo shutdown -h now'
 cp:Copy the contents of one file to another, with 'cp source_file target_file'
+clear:Too much stuff on your screen, try 'clear'
+google:Want to learn more? Google it.
+ditto:Copy the contents of a folder to a new location with 'ditto -V [directory] [new_directory]
+killall:'killall <process>' will stop the process named.
+yes:Want to put you mac to the test? The 'yes' command will max out the cpu. ctrl+c to stop.
+uptime:Find out the last time you restarted your computer with 'uptime'
+bangbang:Run the same command again '!!'
+pushup:Press the up arrow to recall previous commands
+caffeinate:Stop your computer from sleeping for a fixed period of time with 'caffeinate -u -t 600'
+ping: Check the connectivity to a URL 'ping -c 10 www.apple.com'
