@@ -1,2 +1,1 @@
 
-You can view hidden files using ls -a
