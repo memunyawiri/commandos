@@ -1,2 +1,0 @@
-PROMPT_COMMAND=
-PS1='\h:\W \u\$'

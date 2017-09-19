@@ -1,0 +1,3 @@
+export PROMPT_COMMAND="commandos_main"
+export PS1='\[\e[1;31m\][\u@ \W]\$\[\e[0m\] Running Commandos! : '
+bash
