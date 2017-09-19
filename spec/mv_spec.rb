@@ -1,7 +1,7 @@
 require 'mv'
 
 describe Mv do
-  subject(:mv) { described_class.new(filename) }
+  subject(:mv) { described_class.new }
   let!(:filename) { 'tips/mv.txt' }
   let!(:tips) { mv.tips }
 
