@@ -1,0 +1,2 @@
+help:You can check the usage of a command using help; example 'help cd'
+man:You can check the manual for a command using man; example 'man cp'

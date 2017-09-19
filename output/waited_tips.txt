@@ -1,2 +1,10 @@
 
 You can view hidden files using ls -a
+
+
+You can view more information about your files using ls -l
+
+You can view files sorted by time modified (most recently modified first) using ls -t
+Auto correct git typos and get meaningful suggestion for correction with 'git config --global help.autocorrect 1'
+Stash your local modifications and revert the working directory to match the HEAD commit with 'git stash'. Retrieve your stash with 'git stash pop'
+You can check the manual for a command using man; example 'man cp'

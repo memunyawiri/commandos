@@ -13,6 +13,7 @@ $ cd path/to/your/desired/folder
 $ git clone https://github.com/BDCraven/commandos.git
 ```
 2. Add the following aliases in .bash_profile. You can find this file at cd ~
+ls -la
 ```
 alias commandos_start='source ~/Projects/commandos/script/commandos_start.sh'
 alias commandos_main='~/Projects/commandos/script/commandos_main.sh'

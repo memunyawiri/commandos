@@ -1,2 +1,25 @@
 log:The command 'git log' will show you all previous commits.
 branch:Adding the flag '-r' to a 'branch' command will show you remote branches too.
+branchnomerged:Has that branch passed the pull request? How would I know! Use 'git branch --no-merged' to find out.
+addA:You can stage new, modified and deleted files using 'git add -A'
+addi:Enjoy interactive staging 'git add -i'
+add:You can stage all new and modified changes, except for deleted changes using 'git add .'
+addu:You can stage all modified and deleted files without new files using 'git add -u'
+checkout:You can undo the changes in <filename> since the last commit using `git checkout <filename>'
+pull:You can pick a particular branch to pull from using 'pull origin <branch_name>'
+diff:Try using 'git diff' to see difference between commits.
+cherry:'git cherry -v master' will show you all of the commits in the current branch yet to be merged to your master.
+autocorrect:Auto correct git typos and get meaningful suggestion for correction with 'git config --global help.autocorrect 1'
+show:You can see more details about a commit using 'git show <commit number>'. Where is the commit number? Try 'git log'
+author:Want to find all of your own commits? No problem. Press enter after this gem of a command --> 'git log --author=“your_name"'
+pushd:A real time saver is 'git pushd' command which takes your current directory and saves it. Then it changes to another directory. Go about you business as normal and to return to the saved directory use 'git popd'
+find:Looking for something in a big directory? 'git find <filename>' is the tool for the job.
+prune:Tidy up your branches with a little pruning. 'git remote prune origin' will remove remote branches that do not exist on the remote repo
+alias:Did you know that you can create your own shorten versions of the git commands using a git alias?This example shortens 'checkout' to 'co' ---> 'git config --global alias.co checkout'
+reset:Ever want to undo a load of changes on a branch? No sweat buddy! Use 'git reset --hard HEAD' before the boss sees
+blame:Show who changed each line of a file with 'git blame'
+revert:Undo/revert a specific commit with 'git revert <commit id>'
+diff2:Compare the differences between branches with 'git diff' and add the flag '-w' if the white space differences are distracting.
+stash:Stash your local modifications and revert the working directory to match the HEAD commit with 'git stash'. Retrieve your stash with 'git stash pop'
+helpg:'git help -g' will bring up the git glossary.
+checkout2:Short on time? 'git checkout -' will quickly checkout the last branch you were on
