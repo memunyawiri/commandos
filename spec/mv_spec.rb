@@ -1,7 +1,7 @@
 require 'mv'
 
 describe Mv do
-  subject(:mv) { described_class.new(filename) }
+  subject(:mv) { described_class.new }
   let!(:filename) { 'tips/mv.txt' }
   let!(:tips) { mv.tips }
 
@@ -20,7 +20,7 @@ describe Mv do
   describe '#suggest_tips' do
     describe 'Tip for renaming a file' do
       it 'suggests using mv to rename a filename into a newfilename' do
-        suggested_tips = mv.suggest_tips('test1.txt ./newdir/test1.txt')
+        suggested_tips = mv.suggest_tips('test1.txt test2.txt')
         expected_tip = tips[:mv]
         expect(suggested_tips.include?(expected_tip)).to be true
       end
@@ -63,12 +63,6 @@ describe Mv do
         suggested_tips = mv.suggest_tips('-fv test2.txt test3.txt')
         expected_tip = tips[:f]
         expect(suggested_tips.include?(expected_tip)).to be false
-      end
-
-      it 'clarifies that the order of the options is important' do
-        suggested_tips = mv.suggest_tips('-if test2.txt test3.txt')
-        expected_tip = tips[:flags_order]
-        expect(suggested_tips.include?(expected_tip)).to be true
       end
     end
 
