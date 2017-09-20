@@ -7,6 +7,11 @@ Commandos has been developed by a team of 5 students  at [Makers Academy](http:/
 
 
 Installation Instructions
+
+Install testing
+Try using the following command:
+
+\curl -sSL https://rawgit.com/BDCraven/commandos/installation/install/install.sh | bash
 ---
 Highlighted commands should be typed into the bash terminal after the $ prompt unless otherwise indicated.
 
