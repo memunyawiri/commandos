@@ -1,0 +1,5 @@
+SCRIPT_PATH="`dirname \"$0\"`"
+cd $SCRIPT_PATH/..
+history 1 > history.txt
+ruby lib/commandos.rb history.txt $OUTPUT_MODE
+rm history.txt

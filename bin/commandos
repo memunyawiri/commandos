@@ -1,0 +1,5 @@
+export PROMPT_COMMAND="commandos_main"
+export PS1='\[\e[1;31m\][\u@ \W]\$\[\e[0m\] Running Commandos! : '
+export OUTPUT_MODE=${1:-print}
+echo OUTPUT_MODE is $OUTPUT_MODE
+bash
