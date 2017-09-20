@@ -4,7 +4,7 @@
 
 Cd to the directory where you would like to install Commandos, then execute the following command.
 ```
-\curl -sSL https://rawgit.com/BDCraven/commandos/installation/install/install.sh | bash
+\curl -sSL https://rawgit.com/BDCraven/commandos/master/install/install.sh | bash
 ```
 This will download and run the installation script which will unpack Commandos and modify your `~/.bash_profile` to include Commandos on your path.
 
