@@ -9,12 +9,33 @@ Commandos has been developed by a team of 5 students  at [Makers Academy](http:/
 Installation Instructions
 ---
 
-Commandos can be installed manually or automatically by following the links below. 
+Commandos can be installed manually or automatically by following the links below.
 
 
 ###### [**_Manual install_**](https://github.com/BDCraven/commandos/tree/master/doc/manu_install.md)
 
-###### [**_Automatic install_**](https://github.com/BDCraven/commandos/tree/master/doc/auto_install.md)    
+###### [**_Automatic install_**](https://github.com/BDCraven/commandos/tree/master/doc/auto_install.md)  
+
+Running Commandos
+---
+
+1. Run `commandos`
+2. Use the bash terminal as you normally would  
+3. Receive tips each time you press enter
+4. Run `exit` when you no longer wish to see more tips
+
+#### Configuration
+
+1. Speech mode: each tip can be spoken out loud by starting commandos speech mode as follows:
+```
+commandos speech
+```
+
+2. File mode: each tip can be written to a file (for future reference) by starting commandos file mode as follows:
+```
+commandos file
+```
+The output will be written to commandos/output/output.txt  
 
 Uninstall Instructions
 ---
@@ -23,19 +44,17 @@ Please note that we have not yet implemented an uninstall method so if you would
 
 * Delete the folder containing Commandos.
 
-* With *manual* installation you can simply delete the three aliases from `~/.bash_profile`.
-
-* With *automatic* installation you just need to delete the following path from `~/.bash_profile`:
+* You just need to delete the following path from `~/.bash_profile`:
 
 
   ```
   export PATH=$PATH:/Home/user/yourfolder/commandos/bin
   ```
 
-* In both cases restart your terminal.
+* Restart your terminal.
 
 
-Your terminal path will have been changed by the installation. However, once you have deleted the above line(s) from the `~/.bash_profile` and restarted your terminal session, the path will be updated.
+Your terminal path would have been changed by the installation. However, once you have deleted the above line from the `~/.bash_profile` and restarted your terminal session, the path will be updated.
 
 Technologies
 ---
