@@ -18,4 +18,4 @@ uptime:Find out the last time you restarted your computer with 'uptime'
 bangbang:Run the same command again '!!'
 pushup:Press the up arrow to recall previous commands
 caffeinate:Stop your computer from sleeping for a fixed period of time with 'caffeinate -u -t 600'
-ping: Check the connectivity to a URL 'ping -c 10 www.apple.com'
+ping:Check the connectivity to a URL 'ping -c 10 www.apple.com'

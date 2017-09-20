@@ -1,11 +1,11 @@
+# Modules here
+require_relative 'flags'
+require_relative 'tips'
+
 # Collaborators here
 require_relative 'printer'
 require_relative 'tips_sanitiser'
 require_relative 'tips_selector'
-
-# Modules here
-require_relative 'flags'
-require_relative 'tips'
 
 # Controller reads the history file, scans for commands and dispatches them to relevant classes
 class Controller
