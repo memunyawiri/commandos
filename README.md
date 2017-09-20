@@ -7,46 +7,31 @@ Commandos has been developed by a team of 5 students  at [Makers Academy](http:/
 
 
 Installation Instructions
-
-
 ---
-Highlighted commands should be typed into the bash terminal after the $ prompt unless otherwise indicated.
 
-Commandos operates in bash and may not operate in other shells. If you are running a shell such as Zsh we recommend changing it before running Commandos. You can temporarily switch shell by typing `exec bash`. To return to Zsh simply type `exec zsh`.
+Commandos can be installed manually or automatically by following the links below. Please note that we have not yet implemented an uninstall method so if you would like to remove Commandos from your system you will need to do so manually:
 
-1. Install the app.
+* Delete the folder containing Commandos.
 
-Cd to the directory where you would like to install the app, then execute the following command.
-```
-\curl -sSL https://rawgit.com/BDCraven/commandos/installation/install/install.sh | bash
-```
-This will download and run the installation script which will unpack the app and modify your `~/.bash_profile` to include the app on your path.
+* With *manual* installation you can simply delete the three aliases from `~/.bash_profile`.
 
-2. To update the bash profile exit the terminal and reopen or simply type `source ~/.bash_profile`
+* With *automatic* installation you just need to delete the following path from `~/.bash_profile`:
 
-3. Start using the app by running the following:
-```
-commandos_start
-```
-This will spawn a new shell that will offer tips as you work.
+  ```
+  export PATH=$PATH:/Home/user/yourfolder/commandos/bin
+  ```
 
-4. Use the bash terminal as you normally would  
-5. Receive tips each time you press enter
-6. Run `exit` when you no longer wish to see more tips and would like to return to your previous shell.
+* In both cases restart your terminal.
 
 
-#### Configuration
+Your terminal path will have been changed by the installation. However, once you have deleted the above line(s) from the `~/.bash_profile` and restarted your terminal session, the path will be updated.
 
-1. Speech mode: each tip can be spoken out loud by starting commandos speech mode as follows:
-```
-commandos_start speech
-```
+The automatic installation is quicker and easier. However, for complete visibility about what is being changed you may prefer the manual installation.
 
-2. File mode: each tip can be written to a file (for future reference) by starting commandos file mode as follows:
-```
-commandos_start file
-```
-The output will be written to commandos/output/output.txt
+
+###### [**_Manual install_**](https://github.com/BDCraven/commandos/tree/master/doc/manu_install.md)
+
+###### [**_Automatic install_**](https://github.com/BDCraven/commandos/tree/master/doc/auto_install.md)    
 
 
 Design
