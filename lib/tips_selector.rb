@@ -5,7 +5,7 @@ class TipsSelector
   end
 
   def select_tip(tips)
-    load_waited_tips
+    @waited_tips = load_tips(waited_file)
     random_non_waited_tip(tips)
   end
 
@@ -13,12 +13,10 @@ class TipsSelector
 
   attr_reader :waited_file, :waited_tips
 
-  def load_waited_tips
-    @waited_tips = []
-    File.open(waited_file, 'r') do |file|
-      file.readlines.each do |line|
-        @waited_tips << line.chomp
-      end
+  def load_tips(file_name)
+    file = File.open(file_name, 'r')
+    file.readlines.each_with_object([]) do |line, loaded_tips|
+      loaded_tips << line.chomp
     end
   end
 
