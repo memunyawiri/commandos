@@ -1,1 +1,10 @@
-Use the "-f" flag to not prompt for confirmation before overwriting the destination path, irrespective of file permissions
+You can view hidden files using ls -a
+If you'd prefer not to see your files listed in column format, run ls -1 to list one entry per line
+You can view more information about your files using ls -l
+
+You can view files sorted by size using ls -S
+You can also run ls -R to recursively list subdirectories
+
+
+You can view files sorted by time modified (most recently modified first) using ls -t
+

@@ -1,4 +1,5 @@
 echo Downloading and installing commandos app...
-curl -L https://github.com/BDCraven/commandos/archive/1.0.tar.gz | tar vzx
+VER=1.1
+curl -L https://github.com/BDCraven/commandos/archive/$VER.tar.gz | tar vzx
 echo ...DONE
-echo "export PATH=\$PATH:$PWD/commandos-1.0/bin" >> ~/.bash_profile
+echo "export PATH=\$PATH:$PWD/commandos-$VER/bin" >> ~/.bash_profile

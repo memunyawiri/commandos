@@ -34,6 +34,6 @@ class Printer
   end
 
   def tips_to_speech(tip)
-    system 'say', tip
+    system 'say', tip if tip
   end
 end
