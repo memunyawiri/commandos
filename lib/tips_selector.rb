@@ -8,12 +8,13 @@ class TipsSelector
 
   def select_tip(tips)
     @waited_tips = load_waited_tips(waited_file)
-    random_non_waited_tip(tips)
+    tip = random_non_waited_tip(tips)
+    tip ? tip : random_non_waited_tip(misc_tips.values)
   end
 
   private
 
-  attr_reader :waited_file, :waited_tips
+  attr_reader :waited_file, :waited_tips, :misc_tips
 
   def load_waited_tips(file_name)
     file = File.open(file_name, 'r')

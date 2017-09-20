@@ -28,7 +28,6 @@ describe Git do
       it 'suggests using log when git is used' do
         expect(git.suggest_tips('push').include?(tips[:log])).to be true
       end
-
     end
   end
 end
