@@ -63,10 +63,6 @@ Ruby
 Bash shell  
 RSpec, Aruba
 
-
-Areas for development
----
-
 The Makers
 ---
 
